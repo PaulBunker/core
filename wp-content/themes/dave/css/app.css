@@ -59,9 +59,14 @@ body.admin-bar .navbar-fixed-top { top: 28px; }
 	border-bottom: 1px solid #000;
 }
 ul.menu {
- list-style:none;	
+	list-style:none;	
 }
 ul.menu a {color:#000;}
+ul.menu a:hover {
+	text-decoration:none;	
+	color:#333;
+}
+
 
 /* =============================================================================
    Posts
