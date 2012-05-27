@@ -43,7 +43,7 @@ function roots_setup() {
 add_action('after_setup_theme', 'roots_setup');
 
 
-function showFeaturedImage ($postID)
+function showFeaturedImage ( $postID )
 {					
 	$args = array(
 	'numberposts' => 1,
@@ -69,4 +69,50 @@ function showFeaturedImage ($postID)
 	//}
 }
 
+
+function gridLoop( $count ){
+
+$nPerCol = $count / 3;
+$n = 0;
+while (have_posts()) : the_post();
+	if ($n == 0){
+		echo "<div id='col1' class=\"ecol\">";
+	}
+	else if ($n == ceil($nPerCol)){
+		echo "<div id='col2'  class=\"ecol\">";
+	}
+	else if ($n == ceil($nPerCol * 2)){
+		echo "<div id='col3'  class=\"ecol\">";
+	}
+	roots_post_before();
+	roots_post_inside_before();
+	shwizzle_excerpt_before(); 
+		echo "\t<div class=\"excerpt-header\">
+			<h4>";
+					shwizzle_open_link(get_permalink()); 
+						the_title(); 
+					shwizzle_close_link();
+			echo "\t\t</h4>
+		</div>";
+			shwizzle_open_link(get_permalink());
+				showFeaturedImage( get_the_ID() );
+			shwizzle_close_link(); 
+			the_excerpt();
+			wp_link_pages(array('before' => '<nav class="pagination">', 'after' => '</nav>'));
+			
+	shwizzle_close_div();
+	if ($n == ceil($nPerCol)-1){
+		shwizzle_close_div();
+	}
+	else if ($n == ceil($nPerCol*2)-1){
+		shwizzle_close_div();
+	}
+	else if ($n == $count){
+		shwizzle_close_div();
+	}
+	roots_post_inside_after();
+	roots_post_after();
+	$n += 1; 
+ endwhile; /* End loop */	
+}
 ?>

@@ -13,6 +13,10 @@
         <?php roots_loop_before(); ?>
         <?php get_template_part('loop', 'single'); ?>
         <?php roots_loop_after(); ?>
+
+		<?php roots_loop_before(); ?>
+        <?php get_template_part('loop', 'category'); ?>
+        <?php roots_loop_after(); ?>
       </div><!-- /#main -->
     <?php roots_main_after(); ?>
     </div><!-- /#content -->

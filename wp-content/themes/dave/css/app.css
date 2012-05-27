@@ -26,6 +26,14 @@ body.top-navbar { padding-top: 60px; }
 body.admin-bar .navbar-fixed-top { top: 28px; }
 */
 
+.ecol{
+	width:220px;
+	float:left;
+}
+#col1, #col2{
+	margin-right:20px;
+}
+
 
 /* =============================================================================
    Content
