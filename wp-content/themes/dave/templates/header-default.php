@@ -4,8 +4,5 @@
     <a class="brand" href="<?php echo home_url(); ?>/">
       <?php bloginfo('name'); ?>
     </a>
-    <nav id="nav-main" role="navigation">
-      <?php wp_nav_menu(array('theme_location' => 'primary_navigation')); ?>
-    </nav>
   </div>
 </header>
