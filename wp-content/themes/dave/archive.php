@@ -10,7 +10,7 @@
     <?php roots_sidebar_after(); ?>
     <?php roots_main_before(); ?>
       <div id="main" class="<?php echo MAIN_CLASSES; ?>" role="main">
-        <div class="page-header">
+        <!--div class="page-header">
           <h1>
             <?php
               $term = get_term_by('slug', get_query_var('term'), get_query_var('taxonomy'));
@@ -33,7 +33,7 @@
               }
             ?>
           </h1>
-        </div>
+        </div-->
         <?php roots_loop_before(); ?>
         <?php get_template_part('loop', 'category'); ?>
         <?php roots_loop_after(); ?>
