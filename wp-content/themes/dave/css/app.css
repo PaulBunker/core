@@ -74,7 +74,7 @@ ul.menu a:hover {
 	text-decoration:none;	
 	color:#333;
 }
-
+#sidebar .active {font-weight:bold;}
 
 /* =============================================================================
    Posts
