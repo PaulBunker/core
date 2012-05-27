@@ -10,12 +10,21 @@ body { }
    Header
    ========================================================================== */
 
-#banner { }
-
-/* Fixed Topbar Navigation */
+#banner {
+	height:110px;	
+}
+a.brand {
+	color:#000;
+	text-decoration: none;
+	line-height: 40px;
+	font-size: 40px;
+	padding-top:15px;
+}
+a.brand:hover{color:#111}
+/* Fixed Topbar Navigation 
 body.top-navbar { padding-top: 60px; }
 body.admin-bar .navbar-fixed-top { top: 28px; }
-
+*/
 
 
 /* =============================================================================
@@ -30,7 +39,10 @@ body.admin-bar .navbar-fixed-top { top: 28px; }
    Primary Content
    ========================================================================== */
 
-#main { }
+#main {
+	border-top: 1px solid #000;
+	border-bottom: 1px solid #000;	
+}
 
 
 
@@ -39,7 +51,21 @@ body.admin-bar .navbar-fixed-top { top: 28px; }
    ========================================================================== */
 
 #sidebar { }
-
+#sidebar .daveWell {
+	min-height: 20px;
+	padding: 19px;
+	margin-bottom: 20px;
+	border-top: 1px solid #000;
+	border-bottom: 1px solid #000;
+}
+ul.menu {
+	list-style:none;	
+}
+ul.menu a {color:#000;}
+ul.menu a:hover {
+	text-decoration:none;	
+	color:#333;
+}
 
 
 /* =============================================================================
