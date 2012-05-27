@@ -48,8 +48,17 @@ body.admin-bar .navbar-fixed-top { top: 28px; }
    ========================================================================== */
 
 #sidebar { }
-
-
+#sidebar .daveWell {
+	min-height: 20px;
+	padding: 19px;
+	margin-bottom: 20px;
+	border-top: 1px solid #000;
+	border-bottom: 1px solid #000;
+}
+ul.menu {
+ list-style:none;	
+}
+ul.menu a {color:#000;}
 
 /* =============================================================================
    Posts
