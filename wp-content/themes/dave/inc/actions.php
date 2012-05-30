@@ -31,9 +31,11 @@ add_action('shwizzle_close_div', 'shwizzle_close_div_func');
 function shwizzle_close_div_func(){
 	echo "</div>\n";
 }
-add_action('shwizzle_open_link', 'shwizzle_open_link_func', 1);
-function shwizzle_open_link_func($link){
-	echo "<a href='".$link."'>";
+add_action('shwizzle_open_link', 'shwizzle_open_link_func',10, 2);
+function shwizzle_open_link_func($link, $cat){
+	echo "<a href='".$link;
+	if($cat) echo "?cat=".$cat;
+	echo "'>";
 }
 add_action('shwizzle_close_link', 'shwizzle_close_link_func');
 function shwizzle_close_link_func(){
