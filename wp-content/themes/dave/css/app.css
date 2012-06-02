@@ -66,7 +66,8 @@ body.admin-bar .navbar-fixed-top { top: 28px; }
 	border-top: 1px solid #000;
 	border-bottom: 1px solid #000;
 }
-ul.menu {
+ul.menu,
+ul.menu ul {
 	list-style:none;	
 }
 ul.menu a {color:#000;}
@@ -75,6 +76,7 @@ ul.menu a:hover {
 	color:#333;
 }
 #sidebar .active {font-weight:bold;}
+#sidebar .active ul {font-weight:normal;}
 
 /* =============================================================================
    Posts
