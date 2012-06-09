@@ -4,7 +4,7 @@ $(document).ready(function() { // dom ready
 //add accordian behaviour to the nav menu
 
  
-	
+	//add speed controller for the animation
 	$.extend($.ui.accordion.animations, {
 		fastslide: function(options) {
 			$.ui.accordion.animations.slide(options, { duration: 100 }); }
@@ -15,7 +15,7 @@ $(document).ready(function() { // dom ready
 		navigation: true,
 		animated: 'fastslide'
 	});
-	
+	//make top level links visit page aswell as open accordian
 	$(".menu a").click(function() {
 		window.location = $(this).attr('href');
 		return;
