@@ -1,4 +1,6 @@
-<?php /* If there are no posts to display, such as an empty archive page */ ?>
+<?php /* If there are no posts to display, such as an empty archive page */
+	echo "\n\n\t\t<!--loop.php-->\n";
+ ?>
 <?php if (!have_posts()) { ?>
   <div class="alert alert-block fade in">
     <a class="close" data-dismiss="alert">&times;</a>
@@ -48,9 +50,9 @@ while (have_posts()) : the_post();
 endwhile; /* End loop */
 
 
-if (is_category()) echo get_query_var('category_name');
-else echo $_GET["cat"];
-gridLoop($count, $post->ID);
+if (is_category()) gridLoop( $count, $post->ID );// echo get_query_var('category_name');
+else gridLoop( $count, $post->ID, $_GET["cat"] );
+
 
 
 ?>

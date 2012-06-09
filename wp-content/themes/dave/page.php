@@ -1,4 +1,6 @@
-<?php get_header(); ?>
+<?php get_header(); 
+	echo "\n\n\t\t<!--page.php-->\n";
+?>
   <?php roots_content_before(); ?>
     <div id="content" class="<?php echo CONTAINER_CLASSES; ?>">
     <?php roots_sidebar_before(); ?>

@@ -1,4 +1,5 @@
 <?php /* Start loop */
+	echo "\n\n\t\t<!--loop-page.php-->\n";
 //function custom_excerpt_length( $length ) {
 //	return 20;
 //}
@@ -18,8 +19,22 @@ endwhile; /* End loop */
 
 echo $_GET["cat"];
 
-
-gridLoop($count, $post->ID);
-
-
+if (is_category()){
+ gridLoop($count, $post->ID);
+}else{
+	while (have_posts()) : the_post();
+	roots_post_before();
+	roots_post_inside_before(); ?>
+	
+	<div class="page-header">
+	  	<h1><?php the_title(); ?></h1>
+	</div>
+	
+	<?php 
+	the_content();
+	roots_post_inside_after();
+	roots_post_after();
+	endwhile;
+}
 ?>
+	

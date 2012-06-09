@@ -1,4 +1,6 @@
-<?php /* Start loop */ ?>
+<?php /* Start loop */ 
+	echo "\n\n\t\t<!--loop-single.php-->\n";
+?>
 <?php while (have_posts()) : the_post(); ?>
   <?php roots_post_before(); ?>
     <article <?php post_class() ?> id="post-<?php the_ID(); ?>">
