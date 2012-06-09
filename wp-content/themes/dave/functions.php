@@ -70,10 +70,14 @@ function showFeaturedImage ( $postID )
 }
 
 
-function gridLoop( $count, $ID ){
+function gridLoop( $count, $ID, $url_cat='' ){
 $nPerCol = $count / 3;
 $n = 0;
-while (have_posts()) : the_post();
+
+if ( ! is_category() ) query_posts( 'category_name='.$url_cat );
+$current_cat = get_query_var( 'category_name' );
+
+while ( have_posts() ) : the_post();
 	if ($n == 0){
 		echo "<div id='col1' class=\"ecol\">";
 	}
@@ -88,9 +92,8 @@ while (have_posts()) : the_post();
 	shwizzle_excerpt_before(); 
 		echo "\t<div class=\"excerpt-header\">
 			<h4>";
-				//if (is_category()) $current_cat = get_query_var('category_name');
-					$current_cat = get_query_var('category_name');
 
+					
 					shwizzle_open_link(get_permalink(), $current_cat); 
 						the_title(); 
 					shwizzle_close_link();
