@@ -21,10 +21,7 @@ a.brand {
 	padding-top:15px;
 }
 a.brand:hover{color:#111}
-/* Fixed Topbar Navigation 
-body.top-navbar { padding-top: 60px; }
-body.admin-bar .navbar-fixed-top { top: 28px; }
-*/
+
 
 .ecol{
 	width:220px;
@@ -58,7 +55,7 @@ body.admin-bar .navbar-fixed-top { top: 28px; }
    Sidebar
    ========================================================================== */
 
-#sidebar { }
+#sidebar { min-height:140px; }
 #sidebar .daveWell {
 	min-height: 20px;
 	padding: 19px;
@@ -66,7 +63,8 @@ body.admin-bar .navbar-fixed-top { top: 28px; }
 	border-top: 1px solid #000;
 	border-bottom: 1px solid #000;
 }
-ul.menu {
+ul.menu,
+ul.menu ul {
 	list-style:none;	
 }
 ul.menu a {color:#000;}
@@ -75,6 +73,7 @@ ul.menu a:hover {
 	color:#333;
 }
 #sidebar .active {font-weight:bold;}
+#sidebar .active ul {font-weight:normal;}
 
 /* =============================================================================
    Posts
