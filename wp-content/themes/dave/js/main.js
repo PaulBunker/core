@@ -3,10 +3,24 @@ $(document).ready(function() { // dom ready
 
 //add accordian behaviour to the nav menu
 
+ 
+	
+	$.extend($.ui.accordion.animations, {
+		fastslide: function(options) {
+			$.ui.accordion.animations.slide(options, { duration: 100 }); }
+	});
+	
 	$('.menu').accordion({
-		event: "mouseover",
-		navigation: true
-	}); 
+		//event: "mouseover",
+		navigation: true,
+		animated: 'fastslide'
+	});
+	
+	$(".menu a").click(function() {
+		window.location = $(this).attr('href');
+		return;
+	});
+
 	
 //sticky nav
 
