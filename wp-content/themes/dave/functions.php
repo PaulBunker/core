@@ -74,8 +74,10 @@ function showFeaturedImage ( $postID )
 }
 
 
-function gridLoop( $current_cat_slug=NULL ){
-
+function gridLoop( ){
+foreach((get_the_category()) as $category){
+	$current_cat_slug = $category->slug;
+}
 if ( $current_cat_slug ) query_posts( 'category_name='.$current_cat_slug );
 $current_cat_slug = get_query_var( 'category_name' );
 
@@ -106,7 +108,7 @@ for ($n=0; $n<$numColumns; $n++){
 		if ($post_num % $numColumns == $n){		// only operate on posts in this column
 			roots_post_before();
 			roots_post_inside_before();
-			shwizzle_open_link(get_permalink(), $current_cat_slug);
+			shwizzle_open_link(get_permalink());
 			shwizzle_excerpt_before( $margin );
 			$image = showFeaturedImage( get_the_ID() );
 			if (!$image){

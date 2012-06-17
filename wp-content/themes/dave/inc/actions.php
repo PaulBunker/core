@@ -32,9 +32,8 @@ function shwizzle_close_div_func(){
 	echo "\t\t</div>\n";
 }
 add_action('shwizzle_open_link', 'shwizzle_open_link_func',10, 2);
-function shwizzle_open_link_func($link, $cat){
+function shwizzle_open_link_func($link){
 	echo "\n\t<a href='".$link;
-	if($cat) echo "?cat=".$cat;
 	echo "'>";
 }
 add_action('shwizzle_close_link', 'shwizzle_close_link_func');
