@@ -17,11 +17,7 @@ endwhile; /* End loop */
 //$query = new WP_Query( 'category_name=$current_cat' );
 
 
-echo $_GET["cat"];
 
-if (is_category()){
- gridLoop();
-}else{
 	while (have_posts()) : the_post();
 	roots_post_before();
 	roots_post_inside_before(); ?>
@@ -35,6 +31,6 @@ if (is_category()){
 	roots_post_inside_after();
 	roots_post_after();
 	endwhile;
-}
+
 ?>
 	

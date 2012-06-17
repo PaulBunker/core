@@ -56,9 +56,12 @@ function showFeaturedImage ( $postID )
 	
 	$attachments = get_children( $args );
 	
-	//print_r($attachments);
+//	print_r($attachments);
 	$image = wp_get_attachment_image_src ( get_post_thumbnail_id ( $post_id ), 'thumbnail' );
-	echo "\t<img src=\"".$image[0]."\" class=\"frontPageThumbnail\" width=\"100%\">\n";
+	if(!$image)
+		return false;
+	else
+		return "\t\t\t<img src=\"".$image[0]."\" class=\"frontPageThumbnail\" width=\"100%\">\n";
 	//if ($attachments) {
 	//	foreach($attachments as $attachment) {
 	//		$image_attributes = wp_get_attachment_image_src( $attachment->ID, 'thumbnail' )  ? wp_get_attachment_image_src( $attachment->ID, 'thumbnail' ) : wp_get_attachment_image_src( $attachment->ID, 'full' );
@@ -67,12 +70,13 @@ function showFeaturedImage ( $postID )
 			
 	//	}
 	//}
+
 }
 
 
-function gridLoop( $current_cat_slug='' ){
+function gridLoop( $current_cat_slug=NULL ){
 
-if ( ! is_category() ) query_posts( 'category_name ='.$current_cat_slug );
+if ( $current_cat_slug ) query_posts( 'category_name='.$current_cat_slug );
 $current_cat_slug = get_query_var( 'category_name' );
 
 // These can come from variables in a theme options script
@@ -104,13 +108,18 @@ for ($n=0; $n<$numColumns; $n++){
 			roots_post_inside_before();
 			shwizzle_open_link(get_permalink(), $current_cat_slug);
 			shwizzle_excerpt_before( $margin );
-				echo "\n\t\t<h4>";
-						 
+			$image = showFeaturedImage( get_the_ID() );
+			if (!$image){
+				echo "\t\t\t<h3>";
 							the_title(); 
-						
+				echo "</h3>\n";
+			}else{
+				echo "\t\t\t<h4>";
+							the_title(); 
 				echo "</h4>\n";
-				//shwizzle_open_link(get_permalink(), $current_cat_slug);
-					showFeaturedImage( get_the_ID() );
+				echo $image;
+			}
+				
 				//shwizzle_close_link(); 
 				//the_excerpt();
 				wp_link_pages(array('before' => '<nav class="pagination">', 'after' => '</nav>')); // we should probably drop this

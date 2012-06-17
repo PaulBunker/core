@@ -47,7 +47,17 @@ a.brand:hover{color:#111}
 	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
 	box-sizing: border-box;         /* Opera/IE 8+ */
 }
-
+.post_excerpt_with_thumbnail h3{
+	display:block;
+	//position:absolute;
+	//background-color:#EEE;
+	width:100%;
+	text-align:left;
+	padding:30px 20px 30px 20px;
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;         /* Opera/IE 8+ */
+}
 
 /* =============================================================================
    Content

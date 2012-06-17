@@ -43,8 +43,8 @@
 //$postID = "the_ID()";
 
 
-if (is_category()) gridLoop( $count, $post->ID );// echo get_query_var('category_name');
-else gridLoop( $count, $post->ID, $_GET["cat"] );
+if (is_category()) gridLoop();// echo get_query_var('category_name');
+else gridLoop( $_GET["cat"] );
 
 
 
