@@ -1,7 +1,7 @@
 // js for dave
 $(document).ready(function() { // dom ready
 
-//add accordian behaviour to the nav menu
+//add accordian behaviour to the nav menu 
 
  
 	//add speed controller for the animation
@@ -11,7 +11,6 @@ $(document).ready(function() { // dom ready
 	});
 	
 	$('.menu').accordion({
-		//event: "mouseover",
 		navigation: true,
 		animated: 'fastslide'
 	});
