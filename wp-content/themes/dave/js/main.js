@@ -38,6 +38,18 @@ $(document).ready(function() { // dom ready
 	
 	}); // end scroll event
 
-	 
-}); // end dom.ready
+	$(".post_excerpt_with_thumbnail").hover( function(){
+		$(this).children('h4').css({opacity:0.78, 
+									visibility:'visible', 
+									'border-top':"1px #FFF solid",
+									'border-bottom':"#DDD solid 1px"}).show("blind", 60);		
+	}, function(){
+		$(this).children('h4').hide("blind", 60);
+	});
+});
+
+	
+
+
+ // end dom.ready
 // EOF

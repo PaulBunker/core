@@ -20,7 +20,7 @@ endwhile; /* End loop */
 echo $_GET["cat"];
 
 if (is_category()){
- gridLoop($count, $post->ID);
+ gridLoop();
 }else{
 	while (have_posts()) : the_post();
 	roots_post_before();

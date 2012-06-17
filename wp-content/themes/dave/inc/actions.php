@@ -23,9 +23,9 @@ function roots_google_analytics() {
 add_action('roots_footer', 'roots_google_analytics');
 
 
-add_action('shwizzle_excerpt_before', 'shwizzle_excerpt_before_func');
-function shwizzle_excerpt_before_func(){
-	echo "\n<div class='post_excerpt_with_thumbnail'>\n";
+add_action('shwizzle_excerpt_before', 'shwizzle_excerpt_before_func',11, 1);
+function shwizzle_excerpt_before_func( $margin ){
+	echo "\n<div class='post_excerpt_with_thumbnail' style=\"margin-bottom:".$margin."px;\"\">\n";
 }
 add_action('shwizzle_close_div', 'shwizzle_close_div_func');
 function shwizzle_close_div_func(){

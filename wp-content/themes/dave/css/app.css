@@ -23,12 +23,25 @@ a.brand {
 a.brand:hover{color:#111}
 
 
-.ecol{
-	width:220px;
+
+.postColumn{
 	float:left;
+	position:relative;
 }
-#col1, #col2{
-	margin-right:20px;
+.post_excerpt_with_thumbnail{
+	position:relative;
+	overflow:hidden;
+}
+.post_excerpt_with_thumbnail h4{
+	//display:block;
+	position:absolute;
+	visibility:hidden;
+	width:100%;
+	background-color:#EEE;
+	bottom:0;
+	line-height:100px;
+	text-align:center;
+
 }
 
 

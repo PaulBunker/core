@@ -58,7 +58,7 @@ function showFeaturedImage ( $postID )
 	
 	//print_r($attachments);
 	$image = wp_get_attachment_image_src ( get_post_thumbnail_id ( $post_id ), 'thumbnail' );
-	echo "\t<img src=\"".$image[0]."\" class=\"frontPageThumbnail\">\n";
+	echo "\t<img src=\"".$image[0]."\" class=\"frontPageThumbnail\" width=\"100%\">\n";
 	//if ($attachments) {
 	//	foreach($attachments as $attachment) {
 	//		$image_attributes = wp_get_attachment_image_src( $attachment->ID, 'thumbnail' )  ? wp_get_attachment_image_src( $attachment->ID, 'thumbnail' ) : wp_get_attachment_image_src( $attachment->ID, 'full' );
@@ -70,54 +70,60 @@ function showFeaturedImage ( $postID )
 }
 
 
-function gridLoop( $count, $ID, $url_cat='' ){
-$nPerCol = $count / 3;
-$n = 0;
+function gridLoop( $current_cat_slug='' ){
 
-if ( ! is_category() ) query_posts( 'category_name='.$url_cat );
-$current_cat = get_query_var( 'category_name' );
+if ( ! is_category() ) query_posts( 'category_name ='.$current_cat_slug );
+$current_cat_slug = get_query_var( 'category_name' );
 
-while ( have_posts() ) : the_post();
-	if ($n == 0){
-		echo "<div id='col1' class=\"ecol\">";
-	}
-	else if ($n == ceil($nPerCol)){
-		echo "<div id='col2'  class=\"ecol\">";
-	}
-	else if ($n == ceil($nPerCol * 2)){
-		echo "<div id='col3'  class=\"ecol\">";
-	}
-	roots_post_before();
-	roots_post_inside_before();
-	shwizzle_excerpt_before(); 
-		echo "\t<div class=\"excerpt-header\">
-			<h4>";
+// These can come from variables in a theme options script
+$numColumns = 3;
+$margin = 20;
 
+// This should come from the config page which should in turn be variable according to the theme options page
+$mainClassesWidth = 700;
+
+// Find the width of our columns using number of cols and variable padding
+$colWidth=floor(($mainClassesWidth-($numColumns-1)*$margin)/$numColumns);
+
+// loop through our columns
+for ($n=0; $n<$numColumns; $n++){
+	$post_num = 0;
+	
+	// start column div and give padding to left side columns
+	for($i=0; $i<$numColumns; $i++){
+		if ($n==$i){
+			if ($i<$numColumns-1)
+				echo "<div class=\"postColumn\" style=\"width:".$colWidth."px; margin-right:".$margin."px;  margin-top:".$margin."px;\">";
+			else
+				echo "<div class=\"postColumn\" style=\"width:".$colWidth."px; margin-top:".$margin."px;\">";
+		}
+	}
+	while ( have_posts() ) : the_post();
+		if ($post_num % $numColumns == $n){		// only operate on posts in this column
+			roots_post_before();
+			roots_post_inside_before();
+			shwizzle_open_link(get_permalink(), $current_cat_slug);
+			shwizzle_excerpt_before( $margin );
+				echo "\n\t\t<h4>";
+						 
+							the_title(); 
+						
+				echo "</h4>\n";
+				//shwizzle_open_link(get_permalink(), $current_cat_slug);
+					showFeaturedImage( get_the_ID() );
+				//shwizzle_close_link(); 
+				//the_excerpt();
+				wp_link_pages(array('before' => '<nav class="pagination">', 'after' => '</nav>')); // we should probably drop this
 					
-					shwizzle_open_link(get_permalink(), $current_cat); 
-						the_title(); 
-					shwizzle_close_link();
-			echo "\t\t</h4>
-		</div>";
-			shwizzle_open_link(get_permalink(), $current_cat);
-				showFeaturedImage( get_the_ID() );
-			shwizzle_close_link(); 
-			the_excerpt();
-			wp_link_pages(array('before' => '<nav class="pagination">', 'after' => '</nav>'));
+			shwizzle_close_div();
+			shwizzle_close_link();
+			roots_post_inside_after();
+			roots_post_after();
 			
-	shwizzle_close_div();
-	if ($n == ceil($nPerCol)-1){
-		shwizzle_close_div();
-	}
-	else if ($n == ceil($nPerCol*2)-1){
-		shwizzle_close_div();
-	}
-	else if ($n == $count){
-		shwizzle_close_div();
-	}
-	roots_post_inside_after();
-	roots_post_after();
-	$n += 1; 
- endwhile; /* End loop */	
+		}
+		$post_num ++; 
+	 endwhile; /* End loop */	
+	echo "</div>\n<!-- End Col ".($n+1)." -->\n";
+}
 }
 ?>
