@@ -42,6 +42,9 @@ function roots_setup() {
 
 add_action('after_setup_theme', 'roots_setup');
 
+// Load up our awesome theme options
+require_once ( get_template_directory() . '/themeoptions.php' );
+
 
 function showFeaturedImage ( $postID )
 {					

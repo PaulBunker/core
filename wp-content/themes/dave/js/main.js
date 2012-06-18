@@ -11,6 +11,7 @@ $(document).ready(function() { // dom ready
 	});
 	
 	$('.menu').accordion({
+		autoHeight: false,
 		navigation: true,
 		animated: 'fastslide'
 	});
