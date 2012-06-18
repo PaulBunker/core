@@ -85,8 +85,11 @@ if ( $current_cat_slug ) query_posts( 'category_name='.$current_cat_slug );
 $current_cat_slug = get_query_var( 'category_name' );
 
 // These can come from variables in a theme options script
-$numColumns = 3;
-$margin = 20;
+
+$options = get_option('dave_theme_options');
+
+$numColumns = $options['selectinput'];
+$margin = $options['marginwidth'];
 
 // This should come from the config page which should in turn be variable according to the theme options page
 $mainClassesWidth = 700;
