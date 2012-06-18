@@ -42,16 +42,9 @@
 
 //$postID = "the_ID()";
 
-$count = 0;
 
-
-while (have_posts()) : the_post();
-	$count += 1;
-endwhile; /* End loop */
-
-
-if (is_category()) gridLoop( $count, $post->ID );// echo get_query_var('category_name');
-else gridLoop( $count, $post->ID, $_GET["cat"] );
+if (is_category()) gridLoop();// echo get_query_var('category_name');
+else gridLoop( $_GET["cat"] );
 
 
 

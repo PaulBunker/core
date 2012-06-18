@@ -23,23 +23,22 @@ function roots_google_analytics() {
 add_action('roots_footer', 'roots_google_analytics');
 
 
-add_action('shwizzle_excerpt_before', 'shwizzle_excerpt_before_func');
-function shwizzle_excerpt_before_func(){
-	echo "\n<div class='post_excerpt_with_thumbnail'>\n";
+add_action('shwizzle_excerpt_before', 'shwizzle_excerpt_before_func',11, 1);
+function shwizzle_excerpt_before_func( $margin ){
+	echo "\n\t\t<div class='post_excerpt_with_thumbnail' style=\"margin-bottom:".$margin."px;\"\">\n";
 }
 add_action('shwizzle_close_div', 'shwizzle_close_div_func');
 function shwizzle_close_div_func(){
-	echo "</div>\n";
+	echo "\t\t</div>\n";
 }
 add_action('shwizzle_open_link', 'shwizzle_open_link_func',10, 2);
-function shwizzle_open_link_func($link, $cat){
-	echo "<a href='".$link;
-	if($cat) echo "?cat=".$cat;
+function shwizzle_open_link_func($link){
+	echo "\n\t<a href='".$link;
 	echo "'>";
 }
 add_action('shwizzle_close_link', 'shwizzle_close_link_func');
 function shwizzle_close_link_func(){
-	echo "</a>";
+	echo "\t</a>\n";
 }
 
 ?>
