@@ -55,13 +55,17 @@ a.brand:hover{color:#111}
    Sidebar
    ========================================================================== */
 
-#sidebar { min-height:140px; }
+#sidebar { 
+	min-height:140px; 
+	//width: 220px;
+}
 #sidebar .daveWell {
 	min-height: 20px;
 	padding: 19px;
 	margin-bottom: 20px;
 	border-top: 1px solid #000;
 	border-bottom: 1px solid #000;
+	
 }
 ul.menu,
 ul.menu ul {
