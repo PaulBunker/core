@@ -88,7 +88,7 @@ $current_cat_slug = get_query_var( 'category_name' );
 
 $options = get_option('dave_theme_options');
 
-$numColumns = $options['selectinput'];
+$numColumns = $options['numcols'];
 $margin = $options['marginwidth'];
 
 // This should come from the config page which should in turn be variable according to the theme options page

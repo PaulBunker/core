@@ -20,19 +20,7 @@ function theme_options_add_page() {
 /**
  * Create arrays for our select and radio options
  */
-$select_options = array(
-	'0' => array(
-		'value' =>	'0',
-		'label' => __( 'Zero', 'davetheme' )
-	),
-	'1' => array(
-		'value' =>	'1',
-		'label' => __( 'One', 'davetheme' )
-	),
-	'2' => array(
-		'value' => '2',
-		'label' => __( 'Two', 'davetheme' )
-	),
+$column_options = array(
 	'3' => array(
 		'value' => '3',
 		'label' => __( 'Three', 'davetheme' )
@@ -44,6 +32,14 @@ $select_options = array(
 	'5' => array(
 		'value' => '5',
 		'label' => __( 'Five', 'davetheme' )
+	),
+	'6' => array(
+		'value' => '6',
+		'label' => __( 'Six', 'davetheme' )
+	),
+	'7' => array(
+		'value' => '7',
+		'label' => __( 'Seven', 'davetheme' )
 	)
 );
 
@@ -126,18 +122,14 @@ $margin_options = array(
 	)
 );
 
-$radio_options = array(
-	'yes' => array(
-		'value' => 'yes',
-		'label' => __( 'Yes', 'davetheme' )
+$colour_options = array(
+	'light' => array(
+		'value' => 'light',
+		'label' => __( 'Light', 'davetheme' )
 	),
-	'no' => array(
-		'value' => 'no',
-		'label' => __( 'No', 'davetheme' )
-	),
-	'maybe' => array(
-		'value' => 'maybe',
-		'label' => __( 'Maybe', 'davetheme' )
+	'dark' => array(
+		'value' => 'dark',
+		'label' => __( 'Dark', 'davetheme' )
 	)
 );
 
@@ -145,7 +137,7 @@ $radio_options = array(
  * Create the options page
  */
 function theme_options_do_page() {
-	global $select_options, $margin_options, $radio_options;
+	global $column_options, $margin_options, $colour_options;
 
 	if ( ! isset( $_REQUEST['settings-updated'] ) )
 		$_REQUEST['settings-updated'] = false;
@@ -190,18 +182,18 @@ function theme_options_do_page() {
 
 				<?php
 				/**
-				 * A dave select input option
+				 * A dave select input option // number of columns
 				 */
 				?>
 				<tr valign="top"><th scope="row"><?php _e( 'Number of columns', 'davetheme' ); ?></th>
 					<td>
-						<select name="dave_theme_options[selectinput]">
+						<select name="dave_theme_options[numcols]">
 							<?php
-								$selected = $options['selectinput'];
+								$selected = $options['numcols'];
 								$p = '';
 								$r = '';
 
-								foreach ( $select_options as $option ) {
+								foreach ( $column_options as $option ) {
 									$label = $option['label'];
 									if ( $selected == $option['value'] ) // Make default first in list
 										$p = "\n\t<option style=\"padding-right: 10px;\" selected='selected' value='" . esc_attr( $option['value'] ) . "'>$label</option>";
@@ -211,13 +203,13 @@ function theme_options_do_page() {
 								echo $p . $r;
 							?>
 						</select>
-						<label class="description" for="dave_theme_options[selectinput]"><?php _e( 'Select number of columns in the grid', 'davetheme' ); ?></label>
+						<label class="description" for="dave_theme_options[numcols]"><?php _e( 'Select number of columns in the grid', 'davetheme' ); ?></label>
 					</td>
 				</tr>
 
 				<?php
 				/**
-				 * A dave select input option
+				 * A dave select input option // margin width
 				 */
 				?>
 				<tr valign="top"><th scope="row"><?php _e( 'Margin width', 'davetheme' ); ?></th>
@@ -243,27 +235,27 @@ function theme_options_do_page() {
 				</tr>
 				<?php
 				/**
-				 * A dave of radio buttons
+				 * Colour options radio buttons
 				 */
 				?>
-				<tr valign="top"><th scope="row"><?php _e( 'Radio buttons', 'davetheme' ); ?></th>
+				<tr valign="top"><th scope="row"><?php _e( 'Colour Options', 'davetheme' ); ?></th>
 					<td>
-						<fieldset><legend class="screen-reader-text"><span><?php _e( 'Radio buttons', 'davetheme' ); ?></span></legend>
+						<fieldset><legend class="screen-reader-text"><span><?php _e( 'Colour Options', 'davetheme' ); ?></span></legend>
 						<?php
 							if ( ! isset( $checked ) )
 								$checked = '';
-							foreach ( $radio_options as $option ) {
-								$radio_setting = $options['radioinput'];
+							foreach ( $colour_options as $option ) {
+								$radio_setting = $options['colouroptions'];
 
 								if ( '' != $radio_setting ) {
-									if ( $options['radioinput'] == $option['value'] ) {
+									if ( $options['colouroptions'] == $option['value'] ) {
 										$checked = "checked=\"checked\"";
 									} else {
 										$checked = '';
 									}
 								}
 								?>
-								<label class="description"><input type="radio" name="dave_theme_options[radioinput]" value="<?php esc_attr_e( $option['value'] ); ?>" <?php echo $checked; ?> /> <?php echo $option['label']; ?></label><br />
+								<label class="description"><input type="radio" name="dave_theme_options[colouroptions]" value="<?php esc_attr_e( $option['value'] ); ?>" <?php echo $checked; ?> /> <?php echo $option['label']; ?></label><br />
 								<?php
 							}
 						?>
