@@ -25,15 +25,16 @@ $(document).ready(function() { // dom ready
 //sticky nav
 
 	var stickyTop = $('.daveWell').offset().top -20; // returns number
+	var wellWidth = $('.daveWell').parent().outerWidth() - (2*parseInt($('.daveWell').css('padding').replace('px', '')));
 	
 	$(window).scroll(function(){ // scroll event
 	
     	var windowTop = $(window).scrollTop(); // returns number
 		
 		if (stickyTop < windowTop) {
-      		$('.daveWell').css({ position: 'fixed', top: 0 });
+      		$('.daveWell').css({ position: 'fixed', top: 0, width:wellWidth+'px' });
     	} else {
-      		$('.daveWell').css('position','static');
+      		$('.daveWell').css({position:'static', width:wellWidth+'px' });
     	}
 	
 	}); // end scroll event
@@ -43,8 +44,10 @@ $(document).ready(function() { // dom ready
 		clearTimeout($(this).data('timeoutId'));
 		$(this).children('h4').css({opacity:0.78, 
 									visibility:'visible', 
-									'border-top':"1px #FFF solid",
-									'border-bottom':"#DDD solid 1px"}).show("blind", 60);		
+									'border-top-width':"1px",
+									'border-top-style': "solid",
+									'border-bottom-style':"solid",
+									'border-bottom-width': "1px"}).show("blind", 60);		
 	}).mouseleave(function(){
 		var someElement = this;
 		var timeoutId = setTimeout(function(){

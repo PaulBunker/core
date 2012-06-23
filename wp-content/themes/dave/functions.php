@@ -17,6 +17,9 @@ require_once locate_template('/inc/actions.php');         // Actions
 require_once locate_template('/inc/widgets.php');         // Sidebars and widgets
 require_once locate_template('/inc/custom.php');          // Custom functions
 
+// Load up our awesome theme options
+require_once ( get_template_directory() . '/themeoptions.php' );
+
 function roots_setup() {
 
   // Make theme available for translation
@@ -42,8 +45,7 @@ function roots_setup() {
 
 add_action('after_setup_theme', 'roots_setup');
 
-// Load up our awesome theme options
-require_once ( get_template_directory() . '/themeoptions.php' );
+
 
 
 function showFeaturedImage ( $postID )
