@@ -1,8 +1,10 @@
 // js for dave
 $(document).ready(function() { // dom ready
 
-//add accordian behaviour to the nav menu 
-
+/*	=============================================================================
+	Menu
+	========================================================================== */
+	//add accordian behaviour to the nav menu 
  
 	//add speed controller for the animation
 	$.extend($.ui.accordion.animations, {
@@ -17,12 +19,15 @@ $(document).ready(function() { // dom ready
 	});
 	//make top level links visit page aswell as open accordian
 	$(".menu a").click(function() {
+		$('#main').children().animate({opacity:0}, 200);
 		window.location = $(this).attr('href');
 		return;
 	});
 
 	
-//sticky nav
+/*	=============================================================================
+	Sticky Nav
+	========================================================================== */
 
 	var stickyTop = $('.daveWell').offset().top -20; // returns number
 	var wellWidth = $('.daveWell').parent().outerWidth() - (2*parseInt($('.daveWell').css('padding').replace('px', '')));
@@ -39,6 +44,20 @@ $(document).ready(function() { // dom ready
 	
 	}); // end scroll event
 
+
+/*	=============================================================================
+	Grid Loop
+	========================================================================== */
+	// Loading animation
+
+	 $(".post_excerpt_with_thumbnail").each( function(i){
+		var thumb = $(this);
+		thumb.css('opacity',0);
+		setInterval( function(){
+			thumb.animate({'opacity':1}, 1000);
+		}, 200*i);
+	});
+  
 	$(".post_excerpt_with_thumbnail").mouseenter( function(){
 		$(".post_excerpt_with_thumbnail").children('h4').hide();
 		clearTimeout($(this).data('timeoutId'));
@@ -56,6 +75,9 @@ $(document).ready(function() { // dom ready
 		//set the timeoutId, allowing us to clear this trigger if the mouse comes back over
 		$(this).data('timeoutId', timeoutId); 
 		//$(this).children('h4').stop().fadeOut(200);
+	});
+	$(".post_excerpt_with_thumbnail").click( function(){
+		$('.entry-content').children().animate({opacity:0}, 200);
 	});
 
 });

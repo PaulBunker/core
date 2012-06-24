@@ -32,6 +32,11 @@ a.brand:hover{color:#111}
 h1{
 	font-size:16px;
 	font-weight:bold;
+	line-height:16px;
+	padding-bottom:16px;
+}
+p {
+	margin:0;
 }
 
 /* =============================================================================
@@ -41,6 +46,7 @@ h1{
 #main {
 	border-top: 1px solid #000;
 	border-bottom: 1px solid #000;	
+	padding-top:24px;
 }
 
 /* =============================================================================
@@ -54,7 +60,7 @@ h1{
 }
 #sidebar .daveWell {
 	min-height: 20px;
-	padding: 19px;
+	padding: 24px 19px;
 	margin-bottom: 20px;
 	border-top: 1px solid #000;
 	border-bottom: 1px solid #000;
@@ -63,6 +69,9 @@ h1{
 ul.menu,
 ul.menu ul {
 	list-style:none;	
+}
+ul.menu ul li {
+	font-size:14px;	
 }
 ul.menu a {color:#000;}
 ul.menu a:hover {

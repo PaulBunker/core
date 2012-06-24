@@ -107,9 +107,9 @@ for ($n=0; $n<$numColumns; $n++){
 	for($i=0; $i<$numColumns; $i++){
 		if ($n==$i){
 			if ($i<$numColumns-1)
-				echo "<div class=\"postColumn\" style=\"width:".$colWidth."px; margin-right:".$margin."px;  margin-top:".$margin."px;\">";
+				echo "<div class=\"postColumn\" style=\"width:".$colWidth."px; margin-right:".$margin."px; \">";
 			else
-				echo "<div class=\"postColumn\" style=\"width:".$colWidth."px; margin-top:".$margin."px;\">";
+				echo "<div class=\"postColumn\" style=\"width:".$colWidth."px;\">";
 		}
 	}
 	while ( have_posts() ) : the_post();
@@ -145,4 +145,94 @@ for ($n=0; $n<$numColumns; $n++){
 	echo "</div>\n<!-- End Col ".($n+1)." -->\n";
 }
 }
+
+
+
+remove_shortcode('gallery', 'gallery_shortcode');
+
+add_shortcode('gallery', 'schwyzl_gallery_shortcode');
+
+/**
+ * The Gallery shortcode.
+ *
+ * This implements the functionality of the Gallery Shortcode for displaying
+ * WordPress images on a post.
+ *
+ * @since 2.5.0
+ *
+ * @param array $attr Attributes of the shortcode.
+ * @return string HTML content to display gallery.
+ */
+function schwyzl_gallery_shortcode($attr) {
+	global $post;
+
+	static $instance = 0;
+	$instance++;
+
+	// We're trusting author input, so let's at least make sure it looks like a valid orderby statement
+	if ( isset( $attr['orderby'] ) ) {
+		$attr['orderby'] = sanitize_sql_orderby( $attr['orderby'] );
+		if ( !$attr['orderby'] )
+			unset( $attr['orderby'] );
+	}
+	extract(shortcode_atts(array(
+		'order'      => 'ASC',
+		'orderby'    => 'menu_order ID',
+		'id'         => $post->ID,
+		'itemtag'    => 'dl',
+		'icontag'    => 'dt',
+		'captiontag' => 'dd',
+		'columns'    => 1,
+		'size'       => 'large',
+		'include'    => '',
+		'exclude'    => '',
+		'navheight'  => 50
+	), $attr));
+	
+	$id = intval($id);
+	if ( 'RAND' == $order )
+		$orderby = 'none';
+
+	if ( !empty($include) ) {
+		$include = preg_replace( '/[^0-9,]+/', '', $include );
+		$_attachments = get_posts( array('include' => $include, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby) );
+
+		$attachments = array();
+		foreach ( $_attachments as $key => $val ) {
+			$attachments[$val->ID] = $_attachments[$key];
+		}
+	} elseif ( !empty($exclude) ) {
+		$exclude = preg_replace( '/[^0-9,]+/', '', $exclude );
+		$attachments = get_children( array('post_parent' => $id, 'exclude' => $exclude, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby) );
+	} else {
+		$attachments = get_children( array('post_parent' => $id, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby) );
+	}
+
+	if ( empty($attachments) )
+		return '';
+
+	if ( is_feed() ) {
+		$output = "\n";
+		foreach ( $attachments as $att_id => $attachment )
+			$output .= wp_get_attachment_link($att_id, $size, true) . "    <!------------here------------>     \n";
+		return $output;
+	}
+
+	$itemtag = tag_escape($itemtag);
+	$captiontag = tag_escape($captiontag);
+	$img_desc = $image->post_excerpt;
+	
+
+	$num = 1;
+	foreach ( $attachments as $id => $attachment ) {
+		$thumbnail = wp_get_attachment_image_src($id, $size, true);
+		$imagetitle = ($attachment->post_excerpt != '') ? $attachment->post_title." - ".$attachment->post_excerpt : $attachment->post_title ;
+		$imagedescription =  $attachment->post_content;
+		$output .= "\n\t\t\t\t\t<img title='".$imagetitle."' alt='".$imagedescription."' class='image".$num."' src='".$thumbnail[0]."' />";
+		++$num;
+	}
+
+return $output;
+}
+
 ?>
