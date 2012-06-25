@@ -45,7 +45,7 @@ p {
 
 #main {
 	border-top: 1px solid #000;
-	border-bottom: 1px solid #000;	
+	//border-bottom: 1px solid #000;	
 	padding-top:24px;
 }
 
@@ -63,7 +63,7 @@ p {
 	padding: 24px 19px;
 	margin-bottom: 20px;
 	border-top: 1px solid #000;
-	border-bottom: 1px solid #000;
+	//border-bottom: 1px solid #000;
 	
 }
 ul.menu,
@@ -141,6 +141,10 @@ ul.sub-menu {
 	box-sizing: border-box;         /* Opera/IE 8+ */
 }
 
+.post_excerpt_with_thumbnail h3{
+	text-decoration:none;
+	font-size:14px; 
+}
 /* =============================================================================
    Post Comments
    ========================================================================== */
@@ -155,7 +159,7 @@ ol.commentlist img.avatar { float: left; margin-right: 10px; }
    ========================================================================== */
 
 #content-info {
-  margin-top: 45px;
+  //margin-top: 45px;
   padding: 35px 0 36px;
   border-top: 1px solid #e5e5e5;
 }

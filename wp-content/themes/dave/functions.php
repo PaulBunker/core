@@ -228,7 +228,7 @@ function schwyzl_gallery_shortcode($attr) {
 		$thumbnail = wp_get_attachment_image_src($id, $size, true);
 		$imagetitle = ($attachment->post_excerpt != '') ? $attachment->post_title." - ".$attachment->post_excerpt : $attachment->post_title ;
 		$imagedescription =  $attachment->post_content;
-		$output .= "\n\t\t\t\t\t<img title='".$imagetitle."' alt='".$imagedescription."' class='image".$num."' src='".$thumbnail[0]."' />";
+		$output .= "\n\t\t<img class='image' src='".$thumbnail[0]."' />";
 		++$num;
 	}
 

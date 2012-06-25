@@ -75,13 +75,17 @@ ul.sub-menu {
 
 
 .postColumn{ }
-.post_excerpt_with_thumbnail{ }
+.post_excerpt_with_thumbnail{ background-color:#111; }
 .post_excerpt_with_thumbnail h4{ 
 	background-color:#000; 
 	border-bottom-color:#101010;
-	border-top-color:#131313;
+	border-top-color:#121212;
+	color:#FFF;
 }
-.post_excerpt_with_thumbnail h3{ }
+.post_excerpt_with_thumbnail h3{ 
+	color:#1f1f1f;
+}
+.post_excerpt_with_thumbnail h3:hover{ color:#FFF }
 
 /* =============================================================================
    Post Comments
@@ -91,10 +95,23 @@ ul.sub-menu {
 ol.commentlist img.avatar { }
 
 /* =============================================================================
+   Alert
+   ========================================================================== */
+.alert{
+	color:#F90;
+	background-color:#211;
+	text-shadow:0 1px 0 #CA0000;
+}
+.alert .close{
+	color:#F90;
+	text-shadow:0 1px 0 #CA0000;
+}
+   
+/* =============================================================================
    Footer
    ========================================================================== */
 
-#content-info { border-top-color: #191919; }
+#content-info { border-top-color: #EEE; }
 #content-info p small { }
 
 /* =============================================================================

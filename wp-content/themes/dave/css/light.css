@@ -30,7 +30,7 @@ a.brand:hover{ color:#111; }
 
 #main {
 	border-top-color: #000;
-	border-bottom-color: #000;
+	//border-bottom-color: #000;
 }
 
 a{ color:#999; }
@@ -74,7 +74,7 @@ ul.sub-menu {
 
 
 .postColumn{ }
-.post_excerpt_with_thumbnail{ }
+.post_excerpt_with_thumbnail{ background-color:#CCC; }
 .post_excerpt_with_thumbnail h4{ 
 	background-color:#EEE; 
 	border-bottom-color:#DDD;
@@ -93,7 +93,7 @@ ol.commentlist img.avatar { }
    Footer
    ========================================================================== */
 
-#content-info { border-top-color: #e5e5e5; }
+#content-info { border-top-color: #000; }
 #content-info p small { }
 
 /* =============================================================================
