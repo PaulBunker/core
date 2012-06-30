@@ -1,10 +1,11 @@
+@charset "utf-8";
+/* CSS Document */
+
 /* =============================================================================
    Base
    ========================================================================== */
 
 body { }
-
-
 
 /* =============================================================================
    Header
@@ -13,6 +14,7 @@ body { }
 #banner {
 	height:110px;	
 }
+
 a.brand {
 	color:#000;
 	text-decoration: none;
@@ -22,6 +24,90 @@ a.brand {
 }
 a.brand:hover{color:#111}
 
+/* =============================================================================
+   Content
+   ========================================================================== */
+
+#content { }
+h1{
+	font-size:16px;
+	font-weight:bold;
+	line-height:16px;
+	padding-bottom:16px;
+}
+p {
+	margin:0;
+}
+
+/* =============================================================================
+   Primary Content
+   ========================================================================== */
+
+#main {
+	border-top: 1px solid #000;
+	//border-bottom: 1px solid #000;	
+	padding-top:24px;
+}
+
+/* =============================================================================
+   Sidebar
+   ========================================================================== */
+
+#sidebar { 
+	min-height:140px;
+	font-size:16px;
+	//width: 220px;
+}
+#sidebar .daveWell {
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;
+	width: 220px;
+	min-height: 20px;
+	padding: 24px 19px;
+	margin-bottom: 20px;
+	border-top: 1px solid #000;
+	//border-bottom: 1px solid #000;
+	
+}
+ul.menu,
+ul.menu ul {
+	list-style:none;	
+}
+ul.menu ul li {
+	font-size:14px;	
+}
+ul.menu a {color:#000;}
+ul.menu a:hover {
+	text-decoration:none;	
+	color:#333;
+}
+ul.sub-menu {
+	margin-left:0px;
+	padding-left:13px;
+	border-top:1px solid #e5e5e5;
+	border-bottom:1px solid #e5e5e5;
+}
+#sidebar .active {font-weight:bold;}
+#sidebar .active ul {font-weight:normal;}
+
+/* =============================================================================
+   Posts
+   ========================================================================== */
+
+.hentry header { }
+.hentry h2 a { text-decoration: none; }
+.hentry time { display: block; }
+.hentry p.byline { }
+.hentry footer { clear: both; }
+.entry-content img{
+	padding-bottom:20px;
+}
+
+
+/* =============================================================================
+   Post Grid
+   ========================================================================== */
 
 
 .postColumn{
@@ -59,75 +145,10 @@ a.brand:hover{color:#111}
 	box-sizing: border-box;         /* Opera/IE 8+ */
 }
 
-/* =============================================================================
-   Content
-   ========================================================================== */
-
-#content { }
-
-
-
-/* =============================================================================
-   Primary Content
-   ========================================================================== */
-
-#main {
-	border-top: 1px solid #000;
-	border-bottom: 1px solid #000;	
+.post_excerpt_with_thumbnail h3{
+	text-decoration:none;
+	font-size:14px; 
 }
-
-
-
-/* =============================================================================
-   Sidebar
-   ========================================================================== */
-
-#sidebar { 
-	min-height:140px; 
-	//width: 220px;
-}
-#sidebar .daveWell {
-	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
-	box-sizing: border-box;
-	width: 220px;
-	min-height: 20px;
-	padding: 19px;
-	margin-bottom: 20px;
-	border-top: 1px solid #000;
-	border-bottom: 1px solid #000;
-	
-}
-ul.menu,
-ul.menu ul {
-	list-style:none;	
-}
-ul.menu a {color:#000;}
-ul.menu a:hover {
-	text-decoration:none;	
-	color:#333;
-}
-ul.sub-menu {
-	margin-left:0px;
-	padding-left:13px;
-	border-top:1px solid #e5e5e5;
-	border-bottom:1px solid #e5e5e5;
-}
-#sidebar .active {font-weight:bold;}
-#sidebar .active ul {font-weight:normal;}
-
-/* =============================================================================
-   Posts
-   ========================================================================== */
-
-.hentry header { }
-.hentry h2 a { text-decoration: none; }
-.hentry time { display: block; }
-.hentry p.byline { }
-.hentry footer { clear: both; }
-
-
-
 /* =============================================================================
    Post Comments
    ========================================================================== */
@@ -142,7 +163,7 @@ ol.commentlist img.avatar { float: left; margin-right: 10px; }
    ========================================================================== */
 
 #content-info {
-  margin-top: 45px;
+  //margin-top: 45px;
   padding: 35px 0 36px;
   border-top: 1px solid #e5e5e5;
 }

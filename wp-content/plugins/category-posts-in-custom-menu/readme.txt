@@ -14,7 +14,11 @@ The custom menu only allows adding a link that leads to a category or tag page. 
 <strong>Now also works for custom post taxonomies!</strong>
 
 = Using it =
+<<<<<<< HEAD
+Enable the plugin and go to Appearance > Menus. Create your Custom Menu. If you use Categories or Post Tags in your Custom Menu, be sure to <b>save the menu first</b>. Next, you can choose whether you would like to list the original link, or if you would like to replace it by the posts in that taxonomy (Category/Post Tag). Note that custom post types are not supported at the moment. 
+=======
 Enable the plugin and go to Appearance > Menus. Create your Custom Menu. If you use Categories or Post Tags in your Custom Menu, be sure to <b>save the menu first</b>. Next, you can choose whether you would like to list the original link, or if you would like to replace it by the posts in that taxonomy (Category/Post Tag). Note that custom taxonomies and post types are not supported at the moment. 
+>>>>>>> db3990b260e1f3710c11c187a89dc9d3b028b616
 
 For each Category or Post Tag item in the menu, you now have the following extra configuration options: 
 
@@ -75,5 +79,9 @@ Two possible causes:
 <li>Issue 14527 (http://core.trac.wordpress.org/ticket/14527) is the cause. When adding a menu item but <i>before</i> saving it, you will indeed see none of the promised checkboxes. So be sure to <b>save your menu</b> after you add a Category/Tag to your menu. <i>Then</i> you'll see the added functionality.
 
 The reason is because the hook that is used to extend the functionality is not being applied until you've saved the item. A patch is approved for 3.4, after which I can fix this :)</li>
+<<<<<<< HEAD
+<li>You're already using another plugin that uses the wp_nav_menu_edit hook and has a higher priority than mine. This is by design: My plugin is not critical and therefore I don't claim a high priority on the hooks. Plugins/Themes that indicate to be more important will be given priority.</li>
+=======
 <li>You're already using another plugin that changes the Appearance > Menu page that has a higher priority than mine.</li>
+>>>>>>> db3990b260e1f3710c11c187a89dc9d3b028b616
 </ul>

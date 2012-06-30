@@ -46,6 +46,9 @@
 if (is_category()) gridLoop();// echo get_query_var('category_name');
 else gridLoop( $_GET["cat"] );
 
+$options = get_option('dave_theme_options');
+echo $options['someinput'];
+
 
 
 ?>

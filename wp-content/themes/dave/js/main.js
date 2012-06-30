@@ -1,8 +1,10 @@
 // js for dave
 $(document).ready(function() { // dom ready
 
-//add accordian behaviour to the nav menu 
-
+/*	=============================================================================
+	Menu
+	========================================================================== */
+	//add accordian behaviour to the nav menu 
  
 	//add speed controller for the animation
 	$.extend($.ui.accordion.animations, {
@@ -17,34 +19,55 @@ $(document).ready(function() { // dom ready
 	});
 	//make top level links visit page aswell as open accordian
 	$(".menu a").click(function() {
+		$('#main').children().animate({opacity:0}, 200);
 		window.location = $(this).attr('href');
 		return;
 	});
 
 	
-//sticky nav
+/*	=============================================================================
+	Sticky Nav
+	========================================================================== */
 
 	var stickyTop = $('.daveWell').offset().top -20; // returns number
+	var wellWidth = $('.daveWell').parent().outerWidth() - (2*parseInt($('.daveWell').css('padding').replace('px', '')));
 	
 	$(window).scroll(function(){ // scroll event
 	
     	var windowTop = $(window).scrollTop(); // returns number
 		
 		if (stickyTop < windowTop) {
-      		$('.daveWell').css({ position: 'fixed', top: 0,  });
+
+      		$('.daveWell').css({ position: 'fixed', top: 0, width:wellWidth+'px' });
     	} else {
-      		$('.daveWell').css('position','static');
+      		$('.daveWell').css({position:'static', width:wellWidth+'px' });
     	}
 	
 	}); // end scroll event
 
+
+/*	=============================================================================
+	Grid Loop
+	========================================================================== */
+	// Loading animation
+
+	 $(".post_excerpt_with_thumbnail").each( function(i){
+		var thumb = $(this);
+		thumb.css('opacity',0);
+		setInterval( function(){
+			thumb.animate({'opacity':1}, 1000);
+		}, 200*i);
+	});
+  
 	$(".post_excerpt_with_thumbnail").mouseenter( function(){
 		$(".post_excerpt_with_thumbnail").children('h4').hide();
 		clearTimeout($(this).data('timeoutId'));
 		$(this).children('h4').css({opacity:0.78, 
 									visibility:'visible', 
-									'border-top':"1px #FFF solid",
-									'border-bottom':"#DDD solid 1px"}).show("blind", 60);		
+									'border-top-width':"1px",
+									'border-top-style': "solid",
+									'border-bottom-style':"solid",
+									'border-bottom-width': "1px"}).show("blind", 60);		
 	}).mouseleave(function(){
 		var someElement = this;
 		var timeoutId = setTimeout(function(){
@@ -54,11 +77,14 @@ $(document).ready(function() { // dom ready
 		$(this).data('timeoutId', timeoutId); 
 		//$(this).children('h4').stop().fadeOut(200);
 	});
+	$(".post_excerpt_with_thumbnail").click( function(){
+		$('.entry-content').children().animate({opacity:0}, 200);
+	});
 
 });
 
 	
 
 
- // end dom.ready
+// end dom.ready
 // EOF
