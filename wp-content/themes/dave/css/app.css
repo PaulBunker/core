@@ -46,7 +46,8 @@ p {
 #main {
 	border-top: 1px solid #000;
 	//border-bottom: 1px solid #000;	
-	padding-top:24px;
+	padding-top:20px;
+	padding-bottom:20px;
 }
 
 /* =============================================================================
@@ -60,7 +61,7 @@ p {
 }
 #sidebar .daveWell {
 	min-height: 20px;
-	padding: 24px 19px;
+	padding: 20px 19px;
 	margin-bottom: 20px;
 	border-top: 1px solid #000;
 	//border-bottom: 1px solid #000;
@@ -152,6 +153,13 @@ ul.sub-menu {
 #comments, #respond, #submit { clear: both; display: block; }
 ol.commentlist img.avatar { float: left; margin-right: 10px; }
 
+/* =============================================================================
+   Pages
+   ========================================================================== */
+
+.page{
+	//margin-bottom:20px;	
+}
 
 
 /* =============================================================================
@@ -159,7 +167,7 @@ ol.commentlist img.avatar { float: left; margin-right: 10px; }
    ========================================================================== */
 
 #content-info {
-  //margin-top: 45px;
+  //margin-top: 20px;
   padding: 35px 0 36px;
   border-top: 1px solid #e5e5e5;
 }
