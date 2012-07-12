@@ -60,6 +60,10 @@ p {
 	//width: 220px;
 }
 #sidebar .daveWell {
+//	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+//	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+//	box-sizing: border-box;
+//	width: 220px; 
 	min-height: 20px;
 	padding: 20px 19px;
 	margin-bottom: 20px;

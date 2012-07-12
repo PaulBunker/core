@@ -2,7 +2,6 @@
 
 add_action( 'admin_init', 'theme_options_init' );
 add_action( 'admin_menu', 'theme_options_add_page' );
-
 /**
  * Init plugin options to white list our options
  */
@@ -14,9 +13,18 @@ function theme_options_init(){
  * Load up the menu page
  */
 function theme_options_add_page() {
-	add_theme_page( __( 'Theme Options', 'davetheme' ), __( 'Theme Options', 'davetheme' ), 'edit_theme_options', 'theme_options', 'theme_options_do_page' );
+	$page = add_theme_page( __( 'Theme Options', 'davetheme' ), __( 'Theme Options', 'davetheme' ), 'edit_theme_options', 'theme_options', 'theme_options_do_page' );
+	add_action( 'admin_print_styles-' . $page, 'dave_options_scripts' );
 }
 
+/**
+ * Load jquery and the color picker widget
+ */
+function dave_options_scripts() {
+    wp_enqueue_style( 'farbtastic' );
+    wp_enqueue_script( 'farbtastic' );
+    wp_enqueue_script( 'dave_options', get_template_directory_uri() . '/js/theme-options.js', array( 'farbtastic', 'jquery' ) );
+}
 /**
  * Create arrays for our select and radio options
  */
@@ -155,7 +163,24 @@ function theme_options_do_page() {
 			<?php $options = get_option( 'dave_theme_options' ); ?>
 
 			<table class="form-table">
-
+				<?php
+				/**
+				 * A dave color picker option
+				 		TOM: input id's with []'s messed with the jquery,
+							couldn't use --->	 <input id="dave_theme_options[color....
+							for testing ---->	 <input id="color"
+								will change for more appropriate names eg. dave_theme_options_backgroundColour
+								consider change all id's to this format  
+				 */
+				?>
+                <tr valign="top"><th scope="row"><?php _e( 'Pick A Colour', 'davetheme' ); ?></th>
+					<td>
+						
+                        <input id="color" name="dave_theme_options[colorPicker]" type="text" value="<?php echo esc_attr( $options['colorPicker'] ); ?>" />
+						<label class="description" for="dave_theme_options[colorPicker]"><?php _e( 'Sample colour picker', 'davetheme' ); ?></label>
+                        <div style="position: absolute;" id="colorpicker"></div>
+					</td>
+				</tr>
 				<?php
 				/**
 				 * A dave checkbox option
@@ -310,7 +335,9 @@ function theme_options_validate( $input ) {
 
 	// Say our textarea option must be safe text with the allowed tags for posts
 	$input['sometextarea'] = wp_filter_post_kses( $input['sometextarea'] );
-
+	
+	$input['colorPicker'] = $input['colorPicker'];
+	
 	return $input;
 }
 

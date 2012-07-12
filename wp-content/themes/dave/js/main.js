@@ -37,6 +37,7 @@ $(document).ready(function() { // dom ready
     	var windowTop = $(window).scrollTop(); // returns number
 		
 		if (stickyTop < windowTop) {
+
       		$('.daveWell').css({ position: 'fixed', top: 0, width:wellWidth+'px' });
     	} else {
       		$('.daveWell').css({position:'static', width:wellWidth+'px' });
@@ -85,5 +86,5 @@ $(document).ready(function() { // dom ready
 	
 
 
- // end dom.ready
+// end dom.ready
 // EOF
