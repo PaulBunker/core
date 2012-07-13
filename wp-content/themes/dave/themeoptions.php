@@ -51,6 +51,7 @@ $column_options = array(
 	)
 );
 
+
 $margin_options = array(
 	'2' => array(
 		'value' =>	'2',
@@ -231,7 +232,39 @@ function theme_options_do_page() {
 						<label class="description" for="dave_theme_options[numcols]"><?php _e( 'Select number of columns in the grid', 'davetheme' ); ?></label>
 					</td>
 				</tr>
-
+				<?php
+				/**
+				 * Default category picker (for home page)
+				 */
+				?>
+				<tr valign="top"><th scope="row"><?php _e( 'Default category', 'davetheme' ); ?></th>
+					<td>
+						<select name="dave_theme_options[defaultcat]">
+							<?php
+								$selected = $options['defaultcat'];
+								$p = '';
+								$r = '';
+								$args = array(
+									'orderby'       => 'name',
+									'hide_empty'    => 1,
+									'hierarchical'  => 0,
+									'parent'        => 0
+								);
+								$categories = get_categories( $args );
+								foreach( $categories as $category ){ 
+									$label = $category->name;
+									$value = $category->slug;
+									if ( $selected == $value ) // Make default first in list
+										$p = "\n\t<option style=\"padding-right: 10px;\" selected='selected' value='" . esc_attr( $value ) . "'>$label</option>";
+									else
+										$r .= "\n\t<option style=\"padding-right: 10px;\" value='" . esc_attr( $value ) . "'>$label</option>";
+								}
+								echo $p . $r;
+							?>
+						</select>
+						<label class="description" for="dave_theme_options[defaultcat]"><?php _e( 'Choose default category', 'davetheme' ); ?></label>
+					</td>
+				</tr>
 				<?php
 				/**
 				 * A dave select input option // margin width
