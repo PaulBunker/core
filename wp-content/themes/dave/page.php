@@ -2,7 +2,7 @@
 	echo "\n\n\t\t<!--page.php-->\n";
 ?>
   <?php roots_content_before(); ?>
-    <div id="content" class="<?php echo CONTAINER_CLASSES; ?>">
+    <div id="content" class="<?php echo CONTAINER_CLASSES; ?> page">
     <?php roots_sidebar_before(); ?>
       <aside id="sidebar" class="<?php echo SIDEBAR_CLASSES; ?>" role="complementary">
       <?php roots_sidebar_inside_before(); ?>

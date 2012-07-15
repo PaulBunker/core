@@ -79,7 +79,10 @@ function showFeaturedImage ( $postID )
 }
 
 
-function gridLoop( ){
+function gridLoop( $defaultcat = '' ){
+if(! $defaultcat == '' ){
+	$current_cat_slug = $defaultcat;
+}
 foreach((get_the_category()) as $category){
 	$current_cat_slug = $category->slug;
 }
