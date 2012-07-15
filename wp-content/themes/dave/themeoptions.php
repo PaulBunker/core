@@ -23,7 +23,7 @@ function theme_options_add_page() {
 function dave_options_scripts() {
     wp_enqueue_style( 'farbtastic' );
     wp_enqueue_script( 'farbtastic' );
-    wp_enqueue_script( 'dave_options', get_template_directory_uri() . '/js/theme-options.js', array( 'farbtastic', 'jquery' ) );
+    wp_enqueue_script( 'dave_options', get_template_directory_uri() . '/js/themeoptions.js', array( 'farbtastic', 'jquery' ) );
 }
 /**
  * Create arrays for our select and radio options
@@ -52,101 +52,20 @@ $column_options = array(
 );
 
 
-$margin_options = array(
-	'2' => array(
-		'value' =>	'2',
-		'label' => __( '2', 'davetheme' )
-	),
-	'3' => array(
-		'value' =>	'3',
-		'label' => __( '3', 'davetheme' )
-	),
-	'4' => array(
-		'value' => '5',
-		'label' => __( '4', 'davetheme' )
-	),
-	'5' => array(
-		'value' => '5',
-		'label' => __( '5', 'davetheme' )
-	),
-	'6' => array(
-		'value' => '6',
-		'label' => __( '6', 'davetheme' )
-	),
-	'7' => array(
-		'value' => '7',
-		'label' => __( '7', 'davetheme' )
-	),
-	'8' => array(
-		'value' => '8',
-		'label' => __( '8', 'davetheme' )
-	),
-	'9' => array(
-		'value' => '9',
-		'label' => __( '9', 'davetheme' )
-	),
-	'10' => array(
-		'value' => '10',
-		'label' => __( '10', 'davetheme' )
-	),
-	'11' => array(
-		'value' => '11',
-		'label' => __( '11', 'davetheme' )
-	),
-	'12' => array(
-		'value' => '12',
-		'label' => __( '12', 'davetheme' )
-	),
-	'13' => array(
-		'value' => '13',
-		'label' => __( '13', 'davetheme' )
-	),
-	'14' => array(
-		'value' => '14',
-		'label' => __( '14', 'davetheme' )
-	),
-	'15' => array(
-		'value' => '15',
-		'label' => __( '15', 'davetheme' )
-	),
-	'16' => array(
-		'value' => '16',
-		'label' => __( '16', 'davetheme' )
-	),
-	'17' => array(
-		'value' => '17',
-		'label' => __( '17', 'davetheme' )
-	),
-	'18' => array(
-		'value' => '18',
-		'label' => __( '18', 'davetheme' )
-	),
-	'19' => array(
-		'value' => '19',
-		'label' => __( '19', 'davetheme' )
-	),
-	'20' => array(
-		'value' => '20',
-		'label' => __( '20', 'davetheme' )
-	)
-);
-
-$colour_options = array(
-	'light' => array(
-		'value' => 'light',
-		'label' => __( 'Light', 'davetheme' )
-	),
-	'dark' => array(
-		'value' => 'dark',
-		'label' => __( 'Dark', 'davetheme' )
-	)
-);
+$margin_options = array();
+$marginv=2;
+for($marginv; $marginv<=20; $marginv++){
+	$margin_options[$marginv] = array(
+			'value' =>	$marginv,
+			'label' => __( $marginv, 'davetheme' )
+	);
+}
 
 /**
  * Create the options page
  */
 function theme_options_do_page() {
-	global $column_options, $margin_options, $colour_options;
+	global $column_options, $margin_options;
 
 	if ( ! isset( $_REQUEST['settings-updated'] ) )
 		$_REQUEST['settings-updated'] = false;
@@ -166,49 +85,44 @@ function theme_options_do_page() {
 			<table class="form-table">
 				<?php
 				/**
-				 * A dave color picker option
+				 * A color picker option // background colur
 				 		TOM: input id's with []'s messed with the jquery,
 							couldn't use --->	 <input id="dave_theme_options[color....
 							for testing ---->	 <input id="color"
 								will change for more appropriate names eg. dave_theme_options_backgroundColour
-								consider change all id's to this format  
+								consider change all id's to this format
+						PAUL: agreed, the current formar is residual only  
 				 */
 				?>
-                <tr valign="top"><th scope="row"><?php _e( 'Pick A Colour', 'davetheme' ); ?></th>
+                <tr valign="top"><th scope="row"><?php _e( 'Background Colour', 'davetheme' ); ?></th>
 					<td>
-						
-                        <input id="color" name="dave_theme_options[colorPicker]" type="text" value="<?php echo esc_attr( $options['colorPicker'] ); ?>" />
-						<label class="description" for="dave_theme_options[colorPicker]"><?php _e( 'Sample colour picker', 'davetheme' ); ?></label>
-                        <div style="position: absolute;" id="colorpicker"></div>
+                        <input	id="background_colour" 
+								name="dave_theme_options[backgroundcolour]" 
+								type="text" 
+								value="<?php $v=(esc_attr($options['backgroundcolour'])=='')?'#FFF':esc_attr( $options['backgroundcolour'] ); echo $v; ?>" />
+						<label class="description" for="dave_theme_options[backgroundcolour]"><?php _e( 'Select a colour using the colour picker', 'davetheme' ); ?></label>
+                        <div style="position: absolute;" id="background_colourpicker"></div>
 					</td>
 				</tr>
 				<?php
 				/**
-				 * A dave checkbox option
+				 * A color picker option // border colour
 				 */
 				?>
-				<tr valign="top"><th scope="row"><?php _e( 'A checkbox', 'davetheme' ); ?></th>
+                <tr valign="top"><th scope="row"><?php _e( 'Border Colour', 'davetheme' ); ?></th>
 					<td>
-						<input id="dave_theme_options[option1]" name="dave_theme_options[option1]" type="checkbox" value="1" <?php checked( '1', $options['option1'] ); ?> />
-						<label class="description" for="dave_theme_options[option1]"><?php _e( 'Sample checkbox', 'davetheme' ); ?></label>
-					</td>
-				</tr>
-
-				<?php
-				/**
-				 * A dave text input option
-				 */
-				?>
-				<tr valign="top"><th scope="row"><?php _e( 'Margin', 'davetheme' ); ?></th>
-					<td>
-						<input id="dave_theme_options[sometext]" class="regular-text" type="text" name="dave_theme_options[sometext]" value="<?php esc_attr_e( $options['sometext'] ); ?>" />
-						<label class="description" for="dave_theme_options[sometext]"><?php _e( 'Margin width', 'davetheme' ); ?></label>
+                        <input	id="border_colour" 
+								name="dave_theme_options[bordercolour]" 
+								type="text" 
+								value="<?php $v=(esc_attr($options['bordercolour'])=='')?'#000':esc_attr( $options['bordercolour'] ); echo $v;?>" />
+						<label class="description" for="dave_theme_options[bordercolour]"><?php _e( 'Select a colour using the colour picker', 'davetheme' ); ?></label>
+                        <div style="position: absolute;" id="border_colourpicker"></div>
 					</td>
 				</tr>
 
 				<?php
 				/**
-				 * A dave select input option // number of columns
+				 * A select input option // number of columns
 				 */
 				?>
 				<tr valign="top"><th scope="row"><?php _e( 'Number of columns', 'davetheme' ); ?></th>
@@ -230,6 +144,33 @@ function theme_options_do_page() {
 							?>
 						</select>
 						<label class="description" for="dave_theme_options[numcols]"><?php _e( 'Select number of columns in the grid', 'davetheme' ); ?></label>
+					</td>
+				</tr>
+				<?php
+				/**
+				 * A dave select input option // margin width
+				 */
+				?>
+				<tr valign="top"><th scope="row"><?php _e( 'Margin width', 'davetheme' ); ?></th>
+					<td>
+						<select name="dave_theme_options[marginwidth]">
+							<?php
+								$selected = $options['marginwidth'];
+								$p = '';
+								$r = '';
+
+								foreach ( $margin_options as $option ) {
+									$label = $option['label'];
+									$value = $option['value'];
+									if ( $selected == $value ) // Make default first in list
+										$p = "\n\t<option style=\"padding-right: 10px;\" selected='selected' value='" . esc_attr( $value ) . "'>$label</option>";
+									else
+										$r .= "\n\t<option style=\"padding-right: 10px;\" value='" . esc_attr( $value ) . "'>$label</option>";
+								}
+								echo $p . $r;
+							?>
+						</select>
+						<label class="description" for="dave_theme_options[marginwidth]"><?php _e( 'Select the margin width', 'davetheme' ); ?></label>
 					</td>
 				</tr>
 				<?php
@@ -265,73 +206,6 @@ function theme_options_do_page() {
 						<label class="description" for="dave_theme_options[defaultcat]"><?php _e( 'Choose default category', 'davetheme' ); ?></label>
 					</td>
 				</tr>
-				<?php
-				/**
-				 * A dave select input option // margin width
-				 */
-				?>
-				<tr valign="top"><th scope="row"><?php _e( 'Margin width', 'davetheme' ); ?></th>
-					<td>
-						<select name="dave_theme_options[marginwidth]">
-							<?php
-								$selected = $options['marginwidth'];
-								$p = '';
-								$r = '';
-
-								foreach ( $margin_options as $option ) {
-									$label = $option['label'];
-									if ( $selected == $option['value'] ) // Make default first in list
-										$p = "\n\t<option style=\"padding-right: 10px;\" selected='selected' value='" . esc_attr( $option['value'] ) . "'>$label</option>";
-									else
-										$r .= "\n\t<option style=\"padding-right: 10px;\" value='" . esc_attr( $option['value'] ) . "'>$label</option>";
-								}
-								echo $p . $r;
-							?>
-						</select>
-						<label class="description" for="dave_theme_options[marginwidth]"><?php _e( 'Select the margin width', 'davetheme' ); ?></label>
-					</td>
-				</tr>
-				<?php
-				/**
-				 * Colour options radio buttons
-				 */
-				?>
-				<tr valign="top"><th scope="row"><?php _e( 'Colour Options', 'davetheme' ); ?></th>
-					<td>
-						<fieldset><legend class="screen-reader-text"><span><?php _e( 'Colour Options', 'davetheme' ); ?></span></legend>
-						<?php
-							if ( ! isset( $checked ) )
-								$checked = '';
-							foreach ( $colour_options as $option ) {
-								$radio_setting = $options['colouroptions'];
-
-								if ( '' != $radio_setting ) {
-									if ( $options['colouroptions'] == $option['value'] ) {
-										$checked = "checked=\"checked\"";
-									} else {
-										$checked = '';
-									}
-								}
-								?>
-								<label class="description"><input type="radio" name="dave_theme_options[colouroptions]" value="<?php esc_attr_e( $option['value'] ); ?>" <?php echo $checked; ?> /> <?php echo $option['label']; ?></label><br />
-								<?php
-							}
-						?>
-						</fieldset>
-					</td>
-				</tr>
-
-				<?php
-				/**
-				 * A dave textarea option
-				 */
-				?>
-				<tr valign="top"><th scope="row"><?php _e( 'A textbox', 'davetheme' ); ?></th>
-					<td>
-						<textarea id="dave_theme_options[sometextarea]" class="large-text" cols="50" rows="10" name="dave_theme_options[sometextarea]"><?php echo esc_textarea( $options['sometextarea'] ); ?></textarea>
-						<label class="description" for="dave_theme_options[sometextarea]"><?php _e( 'Sample text box', 'davetheme' ); ?></label>
-					</td>
-				</tr>
 			</table>
 
 			<p class="submit">
@@ -341,6 +215,29 @@ function theme_options_do_page() {
 	</div>
 	<?php
 }
+
+
+/**
+ * Validate hex string
+ */
+function validate_hex( $colour, $default ){
+	
+	//Check for a hex color string '#c1c2b4'
+	if(preg_match('/^#[a-f0-9]{6}$/i', $colour)) //hex color is valid
+	{
+	      //Verified hex color
+	} 
+	//Check for a hex color string without hash 'c1c2b4'
+	else if(preg_match('/^[a-f0-9]{6}$/i', $colour)) //hex color is valid
+	{
+		$colour = '#' . $colour;
+	}
+	else {
+		$colour = $default;
+	}
+	return $colour;
+}
+
 
 /**
  * Sanitize and validate input. Accepts an array, return a sanitized array.
@@ -369,7 +266,9 @@ function theme_options_validate( $input ) {
 	// Say our textarea option must be safe text with the allowed tags for posts
 	$input['sometextarea'] = wp_filter_post_kses( $input['sometextarea'] );
 	
-	$input['colorPicker'] = $input['colorPicker'];
+	$input['backgroundcolour'] = validate_hex($input['backgroundcolour'], '#FFFFFF');
+	$input['bordercolour'] = validate_hex($input['bordercolour'], '#000000');
+	//$input['bordercolour'] = $input['bordercolour'];
 	
 	return $input;
 }
