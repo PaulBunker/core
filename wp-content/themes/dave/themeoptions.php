@@ -61,11 +61,23 @@ for($marginv; $marginv<=20; $marginv++){
 	);
 }
 
+	
+$colour_options = array(
+	'light' => array(
+		'value' => 'light',
+		'label' => __( 'Light', 'davetheme' )
+	),
+	'dark' => array(
+		'value' => 'dark',
+		'label' => __( 'Dark', 'davetheme' )
+	)
+);
+
 /**
  * Create the options page
  */
 function theme_options_do_page() {
-	global $column_options, $margin_options;
+	global $column_options, $margin_options, $colour_options;
 
 	if ( ! isset( $_REQUEST['settings-updated'] ) )
 		$_REQUEST['settings-updated'] = false;
@@ -119,7 +131,36 @@ function theme_options_do_page() {
                         <div style="position: absolute;" id="border_colourpicker"></div>
 					</td>
 				</tr>
-
+				<?php
+				/**
+				 * Colour options radio buttons
+				 */
+				?>
+				<tr valign="top"><th scope="row"><?php _e( 'Colour Options', 'davetheme' ); ?></th>
+					<td>
+						<fieldset><legend class="screen-reader-text"><span><?php _e( 'Colour Options', 'davetheme' ); ?></span></legend>
+							<?php
+								if ( ! isset( $checked ) )
+									$checked = '';
+								foreach ( $colour_options as $option ) {
+									$radio_setting = $options['colouroptions'];
+									if ( '' != $radio_setting ) {
+										if ( $options['colouroptions'] == $option['value'] ) {
+											$checked = "checked=\"checked\"";
+										} else {
+											$checked = '';
+										}
+									}
+								?>
+								<label class="description">
+									<input type="radio" name="dave_theme_options[colouroptions]" value="<?php esc_attr_e( $option['value'] ); ?>" <?php echo $checked; ?> /> <?php echo $option['label']; ?>
+								</label><br />
+							<?php
+							}
+							?>
+						</fieldset>
+					</td>
+				</tr>
 				<?php
 				/**
 				 * A select input option // number of columns
