@@ -10,15 +10,12 @@ add_action('roots_head', 'roots_feed_link');
 
 
 function themeoptions_style_func(){
-	$options = get_option('dave_theme_options'); 
-	echo "<style>\n";
-	echo "body { \n";
-	echo "\tbackground-color:".$options['backgroundcolour'].";\n";
-	echo "}\n";
-	echo "#content-info, #main, #sidebar .daveWell, ul.sub-menu {\n";
-	echo "\tborder-color:".$options['bordercolour'].";\n";
-	echo "}\n";
-	echo"</style>\n";		
+	$options = get_option( 'dave_theme_options' ); 
+	foreach ($options as $value){
+		$css .= $value . '|';
+	}
+	$css = urlencode($css);
+	echo "\t<link rel=\"stylesheet\" type=\"text/css\" media=\"screen\" href=\"". get_template_directory_uri() . "/css/style.php?css=" . $css . "\"/>";
 }
 add_action('themeoptions_style', 'themeoptions_style_func');
 
