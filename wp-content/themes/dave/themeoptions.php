@@ -28,29 +28,14 @@ function dave_options_scripts() {
 /**
  * Create arrays for our select and radio options
  */
-$column_options = array(
-	'3' => array(
-		'value' => '3',
-		'label' => __( 'Three', 'davetheme' )
-	),
-	'4' => array(
-		'value' => '4',
-		'label' => __( 'Four', 'davetheme' )
-	),
-	'5' => array(
-		'value' => '5',
-		'label' => __( 'Five', 'davetheme' )
-	),
-	'6' => array(
-		'value' => '6',
-		'label' => __( 'Six', 'davetheme' )
-	),
-	'7' => array(
-		'value' => '7',
-		'label' => __( 'Seven', 'davetheme' )
-	)
-);
-
+$column_options = array();
+$colv=2;
+for($colv; $colv<=7; $colv++){
+	$column_options[$colv] = array(
+			'value' =>	$colv,
+			'label' => __( $colv, 'davetheme' )
+	);
+}
 
 $margin_options = array();
 $marginv=2;
@@ -60,7 +45,6 @@ for($marginv; $marginv<=20; $marginv++){
 			'label' => __( $marginv, 'davetheme' )
 	);
 }
-
 	
 $colour_options = array(
 	'light' => array(
