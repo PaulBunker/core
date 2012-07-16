@@ -6,6 +6,8 @@ function roots_wrap_before() { do_action('roots_wrap_before'); }
 function roots_header_before() { do_action('roots_header_before'); }
 function roots_header_inside() { do_action('roots_header_inside'); }
 function roots_header_after() { do_action('roots_header_after'); }
+function themeoptions_style() { do_action('themeoptions_style'); }
+
 
 // 404.php, archive.php, front-page.php, index.php, loop-page.php, loop-single.php,
 // loop.php, page-custom.php, page-full.php, page.php, search.php, single.php

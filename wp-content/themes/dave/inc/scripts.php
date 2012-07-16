@@ -14,9 +14,9 @@ function roots_scripts() {
 
 	$options = get_option('dave_theme_options');  
 	if ($options['colouroptions'] == 'light'){
-		wp_enqueue_style('dave_colour_style', get_template_directory_uri() . '/css/light.css', false, null);
+		//wp_enqueue_style('dave_colour_style', get_template_directory_uri() . '/css/light.css', false, null);
 	}else{
-		wp_enqueue_style('dave_colour_style', get_template_directory_uri() . '/css/dark.css', false, null);
+		//wp_enqueue_style('dave_colour_style', get_template_directory_uri() . '/css/dark.css', false, null);
 	}
 	
   if (is_child_theme()) {

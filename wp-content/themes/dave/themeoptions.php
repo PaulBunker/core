@@ -73,11 +73,19 @@ $colour_options = array(
 	)
 );
 
+$catargs = array(
+	'orderby'       => 'name',
+	'hide_empty'    => 1,
+	'hierarchical'  => 0,
+	'parent'        => 0
+);
+$category_options = get_categories( $catargs );
+
 /**
  * Create the options page
  */
 function theme_options_do_page() {
-	global $column_options, $margin_options, $colour_options;
+	global $column_options, $margin_options, $colour_options, $category_options;
 
 	if ( ! isset( $_REQUEST['settings-updated'] ) )
 		$_REQUEST['settings-updated'] = false;
@@ -226,14 +234,7 @@ function theme_options_do_page() {
 								$selected = $options['defaultcat'];
 								$p = '';
 								$r = '';
-								$args = array(
-									'orderby'       => 'name',
-									'hide_empty'    => 1,
-									'hierarchical'  => 0,
-									'parent'        => 0
-								);
-								$categories = get_categories( $args );
-								foreach( $categories as $category ){ 
+								foreach( $category_options as $category ){ 
 									$label = $category->name;
 									$value = $category->slug;
 									if ( $selected == $value ) // Make default first in list
@@ -284,7 +285,7 @@ function validate_hex( $colour, $default ){
  * Sanitize and validate input. Accepts an array, return a sanitized array.
  */
 function theme_options_validate( $input ) {
-	global $select_options, $radio_options;
+	global $column_options, $margin_options, $colour_options, $category_options;
 
 	// Our checkbox value is either 0 or 1
 	if ( ! isset( $input['option1'] ) )
@@ -295,8 +296,10 @@ function theme_options_validate( $input ) {
 	$input['sometext'] = wp_filter_nohtml_kses( $input['sometext'] );
 
 	// Our select option must actually be in our array of select options
-	if ( ! array_key_exists( $input['selectinput'], $select_options ) )
-		$input['selectinput'] = null;
+	if ( ! array_key_exists( $input['marginwidth'], $margin_options ) )
+		$input['marginwidth'] = 20;
+	if ( ! array_key_exists( $input['numcols'], $column_options ) )
+		$input['numcols'] = 3;					
 
 	// Our radio option must actually be in our array of radio options
 	if ( ! isset( $input['radioinput'] ) )
@@ -315,3 +318,5 @@ function theme_options_validate( $input ) {
 }
 
 // adapted from http://planetozh.com/blog/2009/05/handling-plugins-options-in-wordpress-28-with-register_setting/
+
+?>

@@ -8,6 +8,21 @@ function roots_feed_link() {
 
 add_action('roots_head', 'roots_feed_link');
 
+
+function themeoptions_style_func(){
+	$options = get_option('dave_theme_options'); 
+	echo "<style>\n";
+	echo "body { \n";
+	echo "\tbackground-color:".$options['backgroundcolour'].";\n";
+	echo "}\n";
+	echo "#content-info, #main, #sidebar .daveWell, ul.sub-menu {\n";
+	echo "\tborder-color:".$options['bordercolour'].";\n";
+	echo "}\n";
+	echo"</style>\n";		
+}
+add_action('themeoptions_style', 'themeoptions_style_func');
+
+
 function roots_google_analytics() {
   $roots_google_analytics_id = GOOGLE_ANALYTICS_ID;
   if ($roots_google_analytics_id !== '') {
