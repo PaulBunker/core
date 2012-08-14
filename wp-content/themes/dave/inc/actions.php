@@ -11,8 +11,8 @@ add_action('roots_head', 'roots_feed_link');
 
 function themeoptions_style_func(){
 	$options = get_option( 'dave_theme_options' ); 
-	foreach ($options as $value){
-		$css .= $value . '|';
+	foreach ($options["css"] as $value){
+		$css .= $value . "|";
 	}
 	$css = urlencode($css);
 	echo "\t<link rel=\"stylesheet\" type=\"text/css\" media=\"screen\" href=\"". get_template_directory_uri() . "/css/style.php?css=" . $css . "\"/>";

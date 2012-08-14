@@ -101,10 +101,10 @@ function theme_options_do_page() {
                 <tr valign="top"><th scope="row"><?php _e( 'Background Colour', 'davetheme' ); ?></th>
 					<td>
                         <input	id="background_colour" 
-								name="dave_theme_options[backgroundcolour]" 
+								name="dave_theme_options[css][backgroundcolour]" 
 								type="text" 
-								value="<?php $v=(esc_attr($options['backgroundcolour'])=='')?'#FFF':esc_attr( $options['backgroundcolour'] ); echo $v; ?>" />
-						<label class="description" for="dave_theme_options[backgroundcolour]"><?php _e( 'Select a colour using the colour picker', 'davetheme' ); ?></label>
+								value="<?php $v=(esc_attr($options['css']['backgroundcolour'])=='')?'#FFF':esc_attr( $options['css']['backgroundcolour'] ); echo $v; ?>" />
+						<label class="description" for="dave_theme_options[css][backgroundcolour]"><?php _e( 'Select a colour using the colour picker', 'davetheme' ); ?></label>
                         <div style="position: absolute;" id="background_colourpicker"></div>
 					</td>
 				</tr>
@@ -116,10 +116,10 @@ function theme_options_do_page() {
                 <tr valign="top"><th scope="row"><?php _e( 'Border Colour', 'davetheme' ); ?></th>
 					<td>
                         <input	id="border_colour" 
-								name="dave_theme_options[bordercolour]" 
+								name="dave_theme_options[css][bordercolour]" 
 								type="text" 
-								value="<?php $v=(esc_attr($options['bordercolour'])=='')?'#000':esc_attr( $options['bordercolour'] ); echo $v;?>" />
-						<label class="description" for="dave_theme_options[bordercolour]"><?php _e( 'Select a colour using the colour picker', 'davetheme' ); ?></label>
+								value="<?php $v=(esc_attr($options['css']['bordercolour'])=='')?'#000':esc_attr( $options['css']['bordercolour'] ); echo $v;?>" />
+						<label class="description" for="dave_theme_options[css][bordercolour]"><?php _e( 'Select a colour using the colour picker', 'davetheme' ); ?></label>
                         <div style="position: absolute;" id="border_colourpicker"></div>
 					</td>
 				</tr>
@@ -128,9 +128,9 @@ function theme_options_do_page() {
 				 * Colour options radio buttons
 				 */
 				?>
-				<tr valign="top"><th scope="row"><?php _e( 'Colour Options', 'davetheme' ); ?></th>
+				<tr valign="top"><th scope="row"><?php _e( 'Text Colour Options', 'davetheme' ); ?></th>
 					<td>
-						<fieldset><legend class="screen-reader-text"><span><?php _e( 'Colour Options', 'davetheme' ); ?></span></legend>
+						<fieldset><legend class="screen-reader-text"><span><?php _e( 'Text Colour Options', 'davetheme' ); ?></span></legend>
 							<?php
 								if ( ! isset( $checked ) )
 									$checked = '';

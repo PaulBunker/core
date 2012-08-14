@@ -44,7 +44,7 @@ p {
    ========================================================================== */
 
 #main {
-	border-top: 1px solid #000;
+	border-top: 1px solid;
 	//border-bottom: 1px solid #000;	
 	padding-top:20px;
 	padding-bottom:20px;
@@ -67,7 +67,7 @@ p {
 	min-height: 20px;
 	padding: 20px 19px;
 	margin-bottom: 20px;
-	border-top: 1px solid #000;
+	border-top: 1px solid;
 	//border-bottom: 1px solid #000;
 	
 }
@@ -173,7 +173,7 @@ ol.commentlist img.avatar { float: left; margin-right: 10px; }
 #content-info {
   //margin-top: 20px;
   padding: 35px 0 36px;
-  border-top: 1px solid #e5e5e5;
+  border-top: 1px solid;
 }
 
 #content-info p small { font-size: 13px; }
