@@ -15,7 +15,8 @@ $(document).ready(function() { // dom ready
 	$('.menu').accordion({
 		autoHeight: false,
 		navigation: true,
-		animated: 'fastslide'
+		animated: 'fastslide',
+		active: false,
 	});
 	//make top level links visit page aswell as open accordian
 	$(".menu a").click(function() {
