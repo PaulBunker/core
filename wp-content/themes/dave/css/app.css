@@ -19,8 +19,20 @@ a.brand {
 	color:#000;
 	text-decoration: none;
 	line-height: 40px;
-	font-size: 40px;
+
 	padding-top:15px;
+
+}
+a.brand span.name{
+	text-transform:uppercase;
+	font-size: 24px;
+	font-weight:bold;
+	//font-stretch:extra-condensed;
+	font-stretch:narrower;
+}
+a.brand span.description{
+	font-size: 18px;
+	font-style:italic;
 }
 a.brand:hover{color:#111}
 
@@ -45,7 +57,7 @@ p {
 
 #main {
 	border-top: 1px solid;
-	//border-bottom: 1px solid #000;	
+	//border-bottom: 1px solid;	
 	padding-top:20px;
 	padding-bottom:20px;
 }
@@ -173,7 +185,7 @@ ol.commentlist img.avatar { float: left; margin-right: 10px; }
 #content-info {
   //margin-top: 20px;
   padding: 35px 0 36px;
-  border-top: 1px solid;
+  border-top: 0;
 }
 
 #content-info p small { font-size: 13px; }

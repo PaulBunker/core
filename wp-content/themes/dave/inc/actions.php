@@ -10,7 +10,7 @@ add_action('roots_head', 'roots_feed_link');
 
 
 function themeoptions_style_func(){
-	$options = get_option( 'dave_theme_options' ); 
+	$options = get_option( 'dd_theme_options' ); 
 	foreach ($options["css"] as $value){
 		$css .= $value . "|";
 	}
