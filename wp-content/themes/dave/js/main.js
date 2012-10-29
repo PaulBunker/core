@@ -26,25 +26,6 @@ $(document).ready(function() { // dom ready
 	});
 
 	
-/*	=============================================================================
-	Sticky Nav
-	========================================================================== */
-
-	var stickyTop = $('.daveWell').offset().top -20; // returns number
-	var wellWidth = $('.daveWell').parent().outerWidth() - (2*parseInt($('.daveWell').css('padding').replace('px', '')));
-	
-	$(window).scroll(function(){ // scroll event
-	
-    	var windowTop = $(window).scrollTop(); // returns number
-		
-		if (stickyTop < windowTop) {
-
-      		$('.daveWell').css({ position: 'fixed', top: 0, width:wellWidth+'px' });
-    	} else {
-      		$('.daveWell').css({position:'static', width:wellWidth+'px' });
-    	}
-	
-	}); // end scroll event
 
 
 /*	=============================================================================

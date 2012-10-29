@@ -21,6 +21,7 @@ a.brand {
 	line-height: 40px;
 	font-size: 40px;
 	padding-top:15px;
+	position:fixed;
 }
 a.brand:hover{color:#111}
 
@@ -68,6 +69,7 @@ p {
 	padding: 20px 19px;
 	margin-bottom: 20px;
 	border-top: 1px solid;
+	position : fixed;
 	//border-bottom: 1px solid #000;
 	
 }
@@ -78,7 +80,9 @@ ul.menu ul {
 ul.menu ul li {
 	font-size:14px;	
 }
-ul.menu a {color:#000;}
+ul.menu a {color:#000;line-height:35px;}
+ul.menu ul a {line-height:20px;}
+
 ul.menu a:hover {
 	text-decoration:none;	
 	color:#333;
@@ -86,12 +90,18 @@ ul.menu a:hover {
 ul.sub-menu {
 	margin-left:0px;
 	padding-left:13px;
-	border-top:1px solid #e5e5e5;
-	border-bottom:1px solid #e5e5e5;
+	padding-bottom: 15px;
+	border-bottom:1px solid #000000;
 }
-#sidebar .active {font-weight:bold;}
+menu {
+	line-height:35px;	
+}
+#sidebar .active {
+	font-weight:bold;
+	border-top:1px solid #000000;
+}
 #sidebar .active ul {font-weight:normal;}
-
+#sidebar ul.menu ul li {border-top:none;}
 /* =============================================================================
    Posts
    ========================================================================== */

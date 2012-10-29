@@ -38,18 +38,7 @@ em{ color:#888 }
    Sidebar
    ========================================================================== */
 
-#sidebar { }
-#sidebar .daveWell { }
-ul.menu,
-ul.menu ul { }
-ul.menu a { color:#333; }
-ul.menu a:hover { color:#000; }
-ul.sub-menu {
-	border-top-color: #e5e5e5;
-	border-bottom-color: #e5e5e5;
-}
-#sidebar .active { }
-#sidebar .active ul { }
+
 
 /* =============================================================================
    Posts
