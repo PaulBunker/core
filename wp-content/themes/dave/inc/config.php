@@ -8,6 +8,12 @@ add_theme_support('h5bp-htaccess');
 
 // Set the content width based on the theme's design and stylesheet
 if (!isset($content_width)) { $content_width = 960; }
+if (!isset($large_image_width)) { $large_image_width = 700; }
+if (!isset($large_image_height)) { $large_image_height = 1086; }
+if (!isset($medium_image_width)) { $medium_image_width = 451; }
+if (!isset($medium_image_height)) { $medium_image_height = 251; }
+if (!isset($thumbnail_image_width)) { $thumbnail_image_width = 220; }
+if (!isset($thumbnail_image_height)) { $thumbnail_image_height = 500; }
 
 define('POST_EXCERPT_LENGTH',       40);
 define('WRAP_CLASSES',              'container');
