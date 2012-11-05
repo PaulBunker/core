@@ -18,8 +18,8 @@ require_once locate_template('/inc/widgets.php');         // Sidebars and widget
 require_once locate_template('/inc/custom.php');          // Custom functions
 
 // Load up our awesome theme options
-if ( file_exists( get_template_directory() . '/themeoptions2.php' ) ){
-	require_once ( get_template_directory() . '/themeoptions2.php' );
+if ( file_exists( get_template_directory() . '/themeoptions.php' ) ){
+	require_once ( get_template_directory() . '/themeoptions.php' );
 }
 
 function roots_setup() {
@@ -77,7 +77,6 @@ function showFeaturedImage ( $postID )
 
 }
 
-
 function gridLoop( $defaultcat = '' ){
 if(! $defaultcat == '' ){
 	$current_cat_slug = $defaultcat;
@@ -116,8 +115,6 @@ for ($n=0; $n<$numColumns; $n++){
 	}
 	while ( have_posts() ) : the_post();
 		if ($post_num % $numColumns == $n){		// only operate on posts in this column
-			roots_post_before();
-			roots_post_inside_before();
 			shwizzle_open_link(get_permalink());
 			shwizzle_excerpt_before( $margin );
 			$image = showFeaturedImage( get_the_ID() );
@@ -131,16 +128,11 @@ for ($n=0; $n<$numColumns; $n++){
 				echo "</h4>\n";
 				echo $image;
 			}
-				
-				//shwizzle_close_link(); 
 				//the_excerpt();
 				wp_link_pages(array('before' => '<nav class="pagination">', 'after' => '</nav>')); // we should probably drop this
 					
 			shwizzle_close_div();
 			shwizzle_close_link();
-			roots_post_inside_after();
-			roots_post_after();
-			
 		}
 		$post_num ++; 
 	 endwhile; /* End loop */	
@@ -237,87 +229,3 @@ function schwyzl_gallery_shortcode($attr) {
 return $output;
 }
 
-
-
-// Remove the default Thematic blogtitle function
-function remove_thematic_actions() {
-    remove_action('roots_head','image_constrain_size_for_editor',3);
-}
-// Call 'remove_thematic_actions' (above) during WP initialization
-//add_action('init','remove_thematic_actions');
-
-//add_action('roots_head', 'schwyzl_image_constrain_size_for_editor', 10, 3);
-
-function schwyzl_image_constrain_size_for_editor($width, $height, $size = 'medium') {
-	global $content_width, $_wp_additional_image_sizes;
-
-	if ( is_array($size) ) {
-		$max_width = $size[0];
-		$max_height = $size[1];
-	}
-
-	elseif ( $size == 'thumb' || $size == 'thumbnail' ) {
-		if(isset($thumbnail_image_width)){
-			$max_width = $thumbnail_image_width;
-		}else{
-			$max_width = intval(get_option('thumbnail_size_w'));
-		}
-		if(isset($thumbnail_image_height)){
-			$max_width = $thumbnail_image_height;
-		}else{
-			$max_height = intval(get_option('thumbnail_size_h'));
-		}
-		// last chance thumbnail size defaults
-		if ( !$max_width && !$max_height ) {
-			$max_width = 220;
-			$max_height = 500;
-		}
-	}
-	elseif ( $size == 'medium' ) {
-		if(isset($medium_image_width)){
-			$max_width = $medium_image_width;
-		}else{
-			$max_width = intval(get_option('medium_size_w'));
-		}
-		if(isset($medium_image_height)){
-			$max_width = $medium_image_height;
-		}else{
-			$max_height = intval(get_option('medium_size_h'));
-		}
-		// if no width is set, default to the theme content width if available
-	}
-	elseif ( $size == 'large' ) {
-		// We're inserting a large size image into the editor. If it's a really
-		// big image we'll scale it down to fit reasonably within the editor
-		// itself, and within the theme's content width if it's known. The user
-		// can resize it in the editor if they wish.
-		if(isset($large_image_width)){
-			$max_width = $large_image_width;
-		}else{
-			$max_width = intval(get_option('large_size_w'));
-		}
-		if(isset($large_image_height)){
-			$max_width = $large_image_height;
-		}else{
-			$max_height = intval(get_option('large_size_h'));
-		}
-		if ( intval($content_width) > 0 )
-			$max_width = min( intval($content_width), $max_width );
-	} elseif ( isset( $_wp_additional_image_sizes ) && count( $_wp_additional_image_sizes ) && in_array( $size, array_keys( $_wp_additional_image_sizes ) ) ) {
-		$max_width = intval( $_wp_additional_image_sizes[$size]['width'] );
-		$max_height = intval( $_wp_additional_image_sizes[$size]['height'] );
-		if ( intval($content_width) > 0 && is_admin() ) // Only in admin. Assume that theme authors know what they're doing.
-			$max_width = min( intval($content_width), $max_width );
-	}
-	// $size == 'full' has no constraint
-	else {
-		$max_width = $width;
-		$max_height = $height;
-	}
-
-	list( $max_width, $max_height ) = apply_filters( 'editor_max_image_size', array( $max_width, $max_height ), $size );
-
-	return wp_constrain_dimensions( $width, $height, $max_width, $max_height );
-}
-
-?>

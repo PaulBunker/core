@@ -17,6 +17,9 @@ if (!isset($thumbnail_image_height)) { $thumbnail_image_height = 500; }
 
 define('POST_EXCERPT_LENGTH',       40);
 define('WRAP_CLASSES',              'container');
+define('DEFAULT_HEADER_TEXT',		get_template_directory_uri().'/img/header.png');
+define('DEFAULT_FAVICON',			get_template_directory_uri().'/img/favicon.ico');
+define('DEFAULT_CATEGORY',			'photography');
 define('CONTAINER_CLASSES',         'row');
 define('MAIN_CLASSES',              'span9');
 define('SIDEBAR_CLASSES',           'span3');
