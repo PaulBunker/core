@@ -3,7 +3,7 @@
     Plugin Name: Category Posts in Custom Menu
     Plugin URI: http://blog.dianakoenraadt.nl
     Description: This plugin replaces selected Category links / Post Tag links in a Custom Menu by a list of their posts.
-    Version: 0.5
+    Version: 0.6
     Author: Diana Koenraadt
     Author URI: http://www.dianakoenraadt.nl
     License: GPL2
@@ -113,29 +113,41 @@ class CPCM_Manager {
 
                   foreach( (array) $posts as $pkey => $post ) {
                       // Decorate the posts with the required data for a menu-item.
-                      $posts[$pkey] = wp_setup_nav_menu_item( $posts[$pkey] );
-                      $posts[$pkey]->menu_item_parent = $menu_item->menu_item_parent; // Set to parent of taxonomy item.
+                      $post = wp_setup_nav_menu_item( $post );
+                      $post->menu_item_parent = $menu_item->menu_item_parent; // Set to parent of taxonomy item.
 
                       // Set the title of the new menu item
-                      $posts[$pkey]->title = get_post_meta($menu_item->db_id, "cpcm-item-titles", true);
+                      $post->title = get_post_meta($menu_item->db_id, "cpcm-item-titles", true);
 
                       // Replace the placeholders in the title by the properties of the post
-                      $userdata = get_userdata($posts[$pkey]->post_author);
-                      $posts[$pkey]->title = str_replace( "%post_author", 	$userdata ? $userdata->display_name : '', 	$posts[$pkey]->title);
-                      $posts[$pkey]->title = str_replace( "%post_title", 	$posts[$pkey]->post_title, 	$posts[$pkey]->title);
-                                                  
-                      $custom_field_keys = get_post_custom_keys($posts[$pkey]->ID);
+                      $userdata = get_userdata($post->post_author);
+                      $post->title = str_replace( "%post_author", 	$userdata ? $userdata->display_name : '', 	$post->title);
+                      
+                      $featured_image = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
+                      $post->title = str_replace( "%post_feat_image", 	$featured_image, 	$post->title);
+                      
+                      $post->title = str_replace( "%post_title", 	$post->post_title, 	$post->title);
+                      $post->title = str_replace( "%post_excerpt", 	$post->post_excerpt, 	$post->title);
+                      $post->title = str_replace( "%post_url", 	$post->url, 	$post->title);
+                      $post->title = str_replace( "%post_date_gmt", 	$post->post_date_gmt, 	$post->title);
+                      $post->title = str_replace( "%post_date", 	$post->post_date, 	$post->title);
+                      $post->title = str_replace( "%post_status", 	$post->post_status, 	$post->title);
+                      $post->title = str_replace( "%post_modified_gmt", 	$post->post_modified_gmt, 	$post->title);
+                      $post->title = str_replace( "%post_modified", 	$post->post_modified, 	$post->title);
+                      $post->title = str_replace( "%post_comment_count", 	$post->comment_count, 	$post->title);
+                        
+                      $custom_field_keys = get_post_custom_keys($post->ID);
                       foreach ( $custom_field_keys as $key => $value ) {
                           $valuet = trim($value);
                           if ( '_' == $valuet{0} )
                               continue;
-                          $meta = get_post_meta($posts[$pkey]->ID, $valuet, true);
+                          $meta = get_post_meta($post->ID, $valuet, true);
                           $valuet_str = str_replace(' ', '_', $valuet);
-                          $posts[$pkey]->title = str_replace( "%post_" . $valuet_str, $meta, $posts[$pkey]->title);
+                          $post->title = str_replace( "%post_" . $valuet_str, $meta, $post->title);
                       }
                       // Remove remaining %post_ occurrences.
                       $pattern = "/%post_\w+/";
-                      $posts[$pkey]->title = preg_replace($pattern, '', $posts[$pkey]->title);
+                      $post->title = preg_replace($pattern, '', $post->title);
 
                       $inc += 1;
                   }

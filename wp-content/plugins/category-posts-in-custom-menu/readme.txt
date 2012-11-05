@@ -2,8 +2,8 @@
 Contributors: anaid
 Tags: menu, category, post tag, tag, posts, dynamic, automatic, custom, taxonomy, custom taxonomy
 Requires at least: 3.2.1
-Tested up to: 3.3.2
-Stable tag: 0.5
+Tested up to: 3.4.1
+Stable tag: 0.6
 
 Dynamic menus: This plugin automatically replaces selected Category links / Post Tag links / Custom Taxonomy links in a Custom Menu by a list of their posts.
 
@@ -14,18 +14,14 @@ The custom menu only allows adding a link that leads to a category or tag page. 
 <strong>Now also works for custom post taxonomies!</strong>
 
 = Using it =
-<<<<<<< HEAD
 Enable the plugin and go to Appearance > Menus. Create your Custom Menu. If you use Categories or Post Tags in your Custom Menu, be sure to <b>save the menu first</b>. Next, you can choose whether you would like to list the original link, or if you would like to replace it by the posts in that taxonomy (Category/Post Tag). Note that custom post types are not supported at the moment. 
-=======
-Enable the plugin and go to Appearance > Menus. Create your Custom Menu. If you use Categories or Post Tags in your Custom Menu, be sure to <b>save the menu first</b>. Next, you can choose whether you would like to list the original link, or if you would like to replace it by the posts in that taxonomy (Category/Post Tag). Note that custom taxonomies and post types are not supported at the moment. 
->>>>>>> db3990b260e1f3710c11c187a89dc9d3b028b616
 
 For each Category or Post Tag item in the menu, you now have the following extra configuration options: 
 
 * replace the link by a list of posts in the menu y/n; 
-* specify the (maximum) number of posts you want to show for this item (-1 = all), and
+* specify the (maximum) number of posts you want to show for this item (-1 = all);
 * their ordering (ascending/descending by none, ID, author, title, date, modified, parent, rand or comment_count); 
-* specify the title for the menu items: for this you can use the wildcards %post_title and %post_author, or wildcards for custom fields, like %post_my_field, where 'my field' or 'my_field' is a custom field;
+* specify the title for the menu items. For this you can use the following wildcards: %post_title, %post_author, %post_feat_image (url only), %post_excerpt, %post_url, %post_date, %post_date_gmt, %post_status, %post_modified, %post_modified_gmt, %post_comment_count or wildcards for custom fields, like %post_my_field, where 'my field' or 'my_field' is a custom field;
 
 = Details =
 This plugin uses the wp_nav_menu_objects filter hook to remove and replace category items in the menu by the posts in that category. It extends Walker_Nav_Menu_Edit to add input fields to Appearance > Menus and adds some CSS to style this properly.
@@ -35,6 +31,10 @@ This plugin uses the wp_nav_menu_objects filter hook to remove and replace categ
 1. Go to Appearance > Menu to enable/disable and set the options for the replacement of Category / Post Tag links by their posts.
 
 == Changelog ==
+
+0.6
+
+* Added a bunch of wildcards: %post_feat_image (url only), %post_excerpt, %post_url, %post_date, %post_date_gmt, %post_status, %post_modified, %post_modified_gmt, %post_comment_count
 
 0.5
 
@@ -79,9 +79,5 @@ Two possible causes:
 <li>Issue 14527 (http://core.trac.wordpress.org/ticket/14527) is the cause. When adding a menu item but <i>before</i> saving it, you will indeed see none of the promised checkboxes. So be sure to <b>save your menu</b> after you add a Category/Tag to your menu. <i>Then</i> you'll see the added functionality.
 
 The reason is because the hook that is used to extend the functionality is not being applied until you've saved the item. A patch is approved for 3.4, after which I can fix this :)</li>
-<<<<<<< HEAD
 <li>You're already using another plugin that uses the wp_nav_menu_edit hook and has a higher priority than mine. This is by design: My plugin is not critical and therefore I don't claim a high priority on the hooks. Plugins/Themes that indicate to be more important will be given priority.</li>
-=======
-<li>You're already using another plugin that changes the Appearance > Menu page that has a higher priority than mine.</li>
->>>>>>> db3990b260e1f3710c11c187a89dc9d3b028b616
 </ul>

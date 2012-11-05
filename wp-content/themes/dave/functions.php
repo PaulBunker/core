@@ -18,7 +18,9 @@ require_once locate_template('/inc/widgets.php');         // Sidebars and widget
 require_once locate_template('/inc/custom.php');          // Custom functions
 
 // Load up our awesome theme options
-require_once ( get_template_directory() . '/themeoptions.php' );
+if ( file_exists( get_template_directory() . '/themeoptions.php' ) ){
+	require_once ( get_template_directory() . '/themeoptions.php' );
+}
 
 function roots_setup() {
 
@@ -44,9 +46,6 @@ function roots_setup() {
 }
 
 add_action('after_setup_theme', 'roots_setup');
-
-
-
 
 function showFeaturedImage ( $postID )
 {					
@@ -78,7 +77,6 @@ function showFeaturedImage ( $postID )
 
 }
 
-
 function gridLoop( $defaultcat = '' ){
 if(! $defaultcat == '' ){
 	$current_cat_slug = $defaultcat;
@@ -91,7 +89,7 @@ $current_cat_slug = get_query_var( 'category_name' );
 
 // These can come from variables in a theme options script
 
-$options = get_option('dave_theme_options');
+$options = get_option('dd_theme_options');
 
 $numColumns = $options['numcols'];
 $margin = $options['marginwidth'];
@@ -117,8 +115,6 @@ for ($n=0; $n<$numColumns; $n++){
 	}
 	while ( have_posts() ) : the_post();
 		if ($post_num % $numColumns == $n){		// only operate on posts in this column
-			roots_post_before();
-			roots_post_inside_before();
 			shwizzle_open_link(get_permalink());
 			shwizzle_excerpt_before( $margin );
 			$image = showFeaturedImage( get_the_ID() );
@@ -132,16 +128,11 @@ for ($n=0; $n<$numColumns; $n++){
 				echo "</h4>\n";
 				echo $image;
 			}
-				
-				//shwizzle_close_link(); 
 				//the_excerpt();
 				wp_link_pages(array('before' => '<nav class="pagination">', 'after' => '</nav>')); // we should probably drop this
 					
 			shwizzle_close_div();
 			shwizzle_close_link();
-			roots_post_inside_after();
-			roots_post_after();
-			
 		}
 		$post_num ++; 
 	 endwhile; /* End loop */	
@@ -238,4 +229,3 @@ function schwyzl_gallery_shortcode($attr) {
 return $output;
 }
 
-?>

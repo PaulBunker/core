@@ -8,6 +8,20 @@ function roots_feed_link() {
 
 add_action('roots_head', 'roots_feed_link');
 
+
+function themeoptions_style_func(){
+	$options = get_option( 'dd_theme_options' ); 
+	if( $options["css"] ){
+		foreach ($options["css"] as $value){
+			$css .= $value . "|";
+		}
+	}
+	$css = urlencode($css);
+	echo "\t<link rel=\"stylesheet\" type=\"text/css\" media=\"screen\" href=\"". get_template_directory_uri() . "/css/style.php?css=" . $css . "\"/>";
+}
+add_action('themeoptions_style', 'themeoptions_style_func');
+
+
 function roots_google_analytics() {
   $roots_google_analytics_id = GOOGLE_ANALYTICS_ID;
   if ($roots_google_analytics_id !== '') {

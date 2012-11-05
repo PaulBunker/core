@@ -6,7 +6,6 @@
    ========================================================================== */
 
 body{ 
-	background-color:#FFF;
 	color:#333;
 }
 
@@ -28,10 +27,7 @@ a.brand:hover{ color:#111; }
    Primary Content
    ========================================================================== */
 
-#main {
-	border-top-color: #000;
-	//border-bottom-color: #000;
-}
+#main { }
 
 a{ color:#999; }
 a:hover{ color:#444}
@@ -43,10 +39,7 @@ em{ color:#888 }
    ========================================================================== */
 
 #sidebar { }
-#sidebar .daveWell {
-	border-top-color: #000;
-	border-bottom-color: #000; 
-}
+#sidebar .daveWell { }
 ul.menu,
 ul.menu ul { }
 ul.menu a { color:#333; }
@@ -93,7 +86,7 @@ ol.commentlist img.avatar { }
    Footer
    ========================================================================== */
 
-#content-info { border-top-color: #000; }
+#content-info { }
 #content-info p small { }
 
 /* =============================================================================

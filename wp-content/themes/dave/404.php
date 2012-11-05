@@ -1,7 +1,5 @@
 <?php get_header(); ?>
-  <?php roots_content_before(); ?>
     <div id="content" class="<?php echo CONTAINER_CLASSES; ?>">
-    <?php roots_main_before(); ?>
       <div id="main" class="<?php echo FULLWIDTH_CLASSES; ?>" role="main">
         <div class="page-header">
           <h1><?php _e('File Not Found', 'roots'); ?></h1>
@@ -18,7 +16,5 @@
         </ul>
         <?php get_search_form(); ?>
       </div><!-- /#main -->
-    <?php roots_main_after(); ?>
     </div><!-- /#content -->
-  <?php roots_content_after(); ?>
 <?php get_footer(); ?>
