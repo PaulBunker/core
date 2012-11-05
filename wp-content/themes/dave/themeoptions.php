@@ -502,7 +502,7 @@ class My_Theme_Options {
 			$this->settings['about'] = array(
 			'section' => 'about',
 			'title'   => '', // Not used for headings.
-			'desc'    => __( 'This theme was developed for Dave Dalziel by Paul Bunker and Tom Schwarz 2012. </br> Not for redistribution. </br></br> tpschwarz@gmail.com </br> paulmarkbunker@gmail.com' ),
+			'desc'    => __( 'This theme was developed for Dave Dalziel by Paul Bunker and Tom Schwarz 2012. </br> Not for redistribution. </br></br> <span class="contacttheauthors"> tpschwarz@gmail.com </br> paulmarkbunker@gmail.com</span>' ),
 			'type'	  => 'info'
 		);
 		
