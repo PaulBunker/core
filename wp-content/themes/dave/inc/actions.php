@@ -17,7 +17,8 @@ function themeoptions_style_func(){
 		}
 	}
 	$css = urlencode($css);
-	echo "\t<link rel=\"stylesheet\" type=\"text/css\" media=\"screen\" href=\"". get_template_directory_uri() . "/css/style.php?css=" . $css . "\"/>";
+	echo "\t<link rel=\"stylesheet\" type=\"text/css\" media=\"screen\" href=\"". get_template_directory_uri() . "/css/style.php?css=" . $css . "\"/>\n";
+	echo "\t<link rel=\"shortcut icon\" href=\"" . $options['favicon'] . "\" />\t ";
 }
 add_action('themeoptions_style', 'themeoptions_style_func');
 

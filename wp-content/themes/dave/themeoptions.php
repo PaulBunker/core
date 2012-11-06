@@ -8,6 +8,7 @@ class My_Theme_Options {
 	
 	private $sections;
 	private $checkboxes;
+	private $colours;
 	private $settings;
 	
 	/**
@@ -18,7 +19,6 @@ class My_Theme_Options {
 		
 		// This will keep track of the checkbox options for the validate_settings function.
 		$this->checkboxes = array();
-		$this->colours = array();
 		$this->settings = array();
 		$this->get_settings();
 		
@@ -459,6 +459,15 @@ class My_Theme_Options {
 			'css'	  => true
 		);
 
+		$this->settings['textcolour2'] = array(
+			'section' => 'colour',
+			'title'   => __( 'Secondary Text Colour' ),
+			'desc'    => __( 'Choose a colour for the navigation menu items that are not in focus.' ),
+			'type'    => 'colour',
+			'std'     => '#555',
+			'css'	  => true
+		);
+
 		$this->settings['linkcolour'] = array(
 			'section' => 'colour',
 			'title'   => __( 'Link Colour' ),
@@ -502,7 +511,7 @@ class My_Theme_Options {
 			$this->settings['about'] = array(
 			'section' => 'about',
 			'title'   => '', // Not used for headings.
-			'desc'    => __( 'This theme was developed for Dave Dalziel by Paul Bunker and Tom Schwarz 2012. </br> Not for redistribution. </br></br> tpschwarz@gmail.com </br> paulmarkbunker@gmail.com' ),
+			'desc'    => __( 'This theme was developed for Dave Dalziel by Paul Bunker and Tom Schwarz 2012. </br> Not for redistribution. </br></br> <span class="contacttheauthors"> tpschwarz@gmail.com </br> paulmarkbunker@gmail.com</span>' ),
 			'type'	  => 'info'
 		);
 		

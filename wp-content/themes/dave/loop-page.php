@@ -1,14 +1,8 @@
 <?php /* Start loop */
-	echo "\n\n\t\t<!--loop-page.php-->\n";
-//function custom_excerpt_length( $length ) {
-//	return 20;
-//}
-//add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
 
-//$postID = "the_ID()";
+echo "\n<!--loop-page.php-->\n";
 
 $count = 0;
-
 
 while (have_posts()) : the_post();
 	$count += 1;
@@ -19,12 +13,12 @@ endwhile; /* End loop */
 
 
 	while (have_posts()) : the_post();
-	?>
+?>
 	<div class="page-header">
 	  	<h1><?php the_title(); ?></h1>
 	</div>
 	
-	<?php 
+<?php 
 	the_content();
 	endwhile;
 
