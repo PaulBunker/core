@@ -1,24 +1,9 @@
 <?php
 
 function roots_scripts() {
-  wp_enqueue_style('roots_bootstrap_style', get_template_directory_uri() . '/css/bootstrap.css', false, null);
+// saved for comparison
+//  wp_enqueue_style('roots_bootstrap_style', get_template_directory_uri() . '/css/bootstrap.css', false, null);
 
-  if (current_theme_supports('bootstrap-responsive')) {
-    wp_enqueue_style('roots_bootstrap_responsive_style', get_template_directory_uri() . '/css/bootstrap-responsive.css', array('roots_bootstrap_style'), null);
-  }
-
-  // If you're not using Bootstrap, include H5BP's style.css:
-  // wp_enqueue_style('roots_style', get_template_directory_uri() . '/css/style.css', false, null);
-
-  wp_enqueue_style('roots_app_style', get_template_directory_uri() . '/css/app.css', false, null);
-
-/*	$options = get_option('dave_theme_options');  
-	if ($options['colouroptions'] == 'light'){
-		wp_enqueue_style('dave_colour_style', get_template_directory_uri() . '/css/light.css', false, null);
-	}else{
-		wp_enqueue_style('dave_colour_style', get_template_directory_uri() . '/css/dark.css', false, null);
-	}
-*/	
   if (is_child_theme()) {
     wp_enqueue_style('roots_child_style', get_stylesheet_uri());
   }

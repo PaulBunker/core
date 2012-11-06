@@ -8,6 +8,7 @@ class My_Theme_Options {
 	
 	private $sections;
 	private $checkboxes;
+	private $colours;
 	private $settings;
 	
 	/**
@@ -18,7 +19,6 @@ class My_Theme_Options {
 		
 		// This will keep track of the checkbox options for the validate_settings function.
 		$this->checkboxes = array();
-		$this->colours = array();
 		$this->settings = array();
 		$this->get_settings();
 		
@@ -456,6 +456,15 @@ class My_Theme_Options {
 			'desc'    => __( 'Choose a colour for text.' ),
 			'type'    => 'colour',
 			'std'     => '#000',
+			'css'	  => true
+		);
+
+		$this->settings['textcolour2'] = array(
+			'section' => 'colour',
+			'title'   => __( 'Secondary Text Colour' ),
+			'desc'    => __( 'Choose a colour for the navigation menu items that are not in focus.' ),
+			'type'    => 'colour',
+			'std'     => '#555',
 			'css'	  => true
 		);
 

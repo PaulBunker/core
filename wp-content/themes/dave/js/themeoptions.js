@@ -19,7 +19,7 @@ var genColourPicker = function( x ){
    	});
 }
 
-l = [ "bgcolour", "border", "border2", "defaultgridbg", "textcolour", "linkcolour" ];
+l = [ "bgcolour", "border", "border2", "defaultgridbg", "textcolour", "textcolour2", "linkcolour" ];
 for ( var x in l ){	genColourPicker( l[x] ); }
 
 
