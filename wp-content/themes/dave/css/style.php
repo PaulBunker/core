@@ -202,7 +202,7 @@ echo <<<CSS
 /* =============================================================================
    Bootstrap
    ========================================================================== */
-.container{margin-right:auto;margin-left:auto;*zoom:1}
+.container{margin-left:10px;}
 .container:before,.container:after{display:table;content:""}
 .container:after{clear:both}
 
@@ -274,7 +274,9 @@ h6{font-size:11px;color:#999;text-transform:uppercase}
 	line-height: 40px;
 	text-decoration: none;
 	margin:0;
-	background-repeat:no-repeat; }
+	background-repeat:no-repeat; 
+	position:fixed;	
+}
 a.brand span.name{ text-transform:uppercase;
 	font-size: 24px;
 	font-weight:bold;
@@ -293,6 +295,7 @@ a.brand:hover{ color:#111; }
 	min-height:140px;
 	font-size:16px;
 	//width: 220px;
+	position:fixed;
 }
 #sidebar .daveWell {
 	min-height: 20px;
@@ -332,6 +335,7 @@ ul.unstyled,ol.unstyled{margin-left:0;list-style:none}
 	border-top: 1px solid;
 	padding-top:20px;
 	padding-bottom:20px;
+	margin-left: 260px;
 }
 
 /* =============================================================================
