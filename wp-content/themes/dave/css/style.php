@@ -366,37 +366,47 @@ ul.unstyled,ol.unstyled{margin-left:0;list-style:none}
    Post Grid
    ========================================================================== */
 .postColumn{ float:left; position:relative; }
+
 .post_excerpt_with_thumbnail{
 	position:relative;
 	overflow:hidden;
 	background-color: {$defaultgridbg};
+	display:block;
 }
 .post_excerpt_with_thumbnail h4{
+	margin:0;
+	overflow:hidden;
 	display:block;
 	position:absolute;
-	visibility:hidden;
-	background-color:#EEE;
-	bottom:0;
+	background:#EEE;
+	background: hsla(0,0%,70%,.7);
+	bottom:0px;
 	width:100%;
-	height:100%;
+	height:0%;
 	text-align:left;
-	padding:30px 20px 30px 20px;
-	line-height:15px;
-	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
-	box-sizing: border-box;         /* Opera/IE 8+ */
-}
-.post_excerpt_with_thumbnail h3{
-	display:block;
-	width:100%;
-	text-align:left;
-	padding:30px 20px 30px 20px;
+	//padding:30px 20px 30px 20px;
+	//line-height:15px;
 	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
 	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
 	box-sizing: border-box;         /* Opera/IE 8+ */
 }
 
+.post_excerpt_with_thumbnail h4 span{
+	padding:30px 20px 30px 20px;
+	line-height:15px;
+	position: absolute;
+}
+.post_excerpt_with_thumbnail img{
+	vertical-align: top;
+}
 .post_excerpt_with_thumbnail h3{
+	display:block;
+	width:100%;
+	text-align:left;
+	padding:30px 20px 30px 20px;
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;         /* Opera/IE 8+ */
 	text-decoration:none;
 	font-size:14px; 
 }

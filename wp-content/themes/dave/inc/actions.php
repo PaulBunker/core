@@ -38,19 +38,20 @@ function roots_google_analytics() {
 add_action('roots_footer', 'roots_google_analytics');
 
 
-add_action('shwizzle_excerpt_before', 'shwizzle_excerpt_before_func',11, 1);
-function shwizzle_excerpt_before_func( $margin ){
-	echo "\n\t\t<div class='post_excerpt_with_thumbnail' style=\"margin-bottom:".$margin."px;\"\">\n";
+add_action('shwizzle_excerpt_before', 'shwizzle_excerpt_before_func',11, 2);
+function shwizzle_excerpt_before_func( $margin, $link ){
+	echo "\n\t\t<a href='".$link ."' class='post_excerpt_with_thumbnail' style='margin-bottom:".$margin."px;'>\n";
 }
-add_action('shwizzle_close_div', 'shwizzle_close_div_func');
-function shwizzle_close_div_func(){
-	echo "\t\t</div>\n";
-}
-add_action('shwizzle_open_link', 'shwizzle_open_link_func',10, 2);
-function shwizzle_open_link_func($link){
-	echo "\n\t<a href='".$link;
-	echo "'>";
-}
+
+//add_action('shwizzle_close_div', 'shwizzle_close_div_func');
+//function shwizzle_close_div_func(){
+//	echo "\t\t</div>\n";
+//}
+//add_action('shwizzle_open_link', 'shwizzle_open_link_func',10, 2);
+//function shwizzle_open_link_func($link){
+//	echo "\n\t<a href='".$link;
+//	echo "'>";
+//}
 add_action('shwizzle_close_link', 'shwizzle_close_link_func');
 function shwizzle_close_link_func(){
 	echo "\t</a>\n";

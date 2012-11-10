@@ -15,7 +15,7 @@ require_once locate_template('/inc/htaccess.php');        // Rewrites for assets
 require_once locate_template('/inc/hooks.php');           // Hooks
 require_once locate_template('/inc/actions.php');         // Actions
 require_once locate_template('/inc/widgets.php');         // Sidebars and widgets
-require_once locate_template('/inc/custom.php');          // Custom functions
+//require_once locate_template('/inc/custom.php');          // Custom functions
 
 // Load up our awesome theme options
 if ( file_exists( get_template_directory() . '/themeoptions.php' ) ){
@@ -115,23 +115,23 @@ for ($n=0; $n<$numColumns; $n++){
 	}
 	while ( have_posts() ) : the_post();
 		if ($post_num % $numColumns == $n){		// only operate on posts in this column
-			shwizzle_open_link(get_permalink());
-			shwizzle_excerpt_before( $margin );
+			//shwizzle_open_link(get_permalink());
+			shwizzle_excerpt_before( $margin, get_permalink() );
 			$image = showFeaturedImage( get_the_ID() );
 			if (!$image){
 				echo "\t\t\t<h3>";
 							the_title(); 
 				echo "</h3>\n";
 			}else{
-				echo "\t\t\t<h4>";
+				echo "\t\t\t<h4><span>";
 							the_title(); 
-				echo "</h4>\n";
+				echo "</span></h4>\n";
 				echo $image;
 			}
 				//the_excerpt();
 				wp_link_pages(array('before' => '<nav class="pagination">', 'after' => '</nav>')); // we should probably drop this
 					
-			shwizzle_close_div();
+			//shwizzle_close_div();
 			shwizzle_close_link();
 		}
 		$post_num ++; 
