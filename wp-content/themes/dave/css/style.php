@@ -268,7 +268,7 @@ h4{font-size:14px}
 h4 small{font-size:12px}
 h5{font-size:12px}
 h6{font-size:11px;color:#999;text-transform:uppercase}
-.page-header{padding-bottom:17px;margin:18px 0;border-bottom:1px solid #eee}
+.page-header{padding-bottom:0px;margin:0;}
 .page-header h1{line-height:1}
 
 /* =============================================================================
@@ -304,7 +304,7 @@ a.brand:hover{ color:#111; }
 }
 #sidebar .daveWell {
 	min-height: 20px;
-	padding: 20px 19px;
+	padding: 0 0 0 19px;
 	margin-bottom: 20px;
 	border-top: 1px solid;
 	border-color: {$border};
@@ -336,8 +336,7 @@ ul.unstyled,ol.unstyled{margin-left:0;list-style:none}
    ========================================================================== */
 
 #main {
-	border-color: {$border};
-	border-top: 1px solid;
+	border-top: 1px solid $border;
 	padding-top:20px;
 	padding-bottom:20px;
 	margin-left: 260px;
