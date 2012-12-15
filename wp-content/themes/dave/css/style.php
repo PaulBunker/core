@@ -304,7 +304,8 @@ a.brand:hover{ color:#111; }
 }
 #sidebar .daveWell {
 	min-height: 20px;
-	padding: 0 0 0 19px;
+	padding: 0;
+	margin-left:15px;
 	margin-bottom: 20px;
 	border-top: 1px solid;
 	border-color: {$border};
